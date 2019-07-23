@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class WelcomeViewController: UIViewController {
     @IBOutlet weak var textFieldEmail: UITextField!
@@ -18,14 +19,61 @@ class WelcomeViewController: UIViewController {
     }
 
     @IBAction func buttonLoginPressed(_ sender: Any) {
-        print("login")
+        dismissKeyboard()
+        if (textFieldEmail.text != "" && textFieldPassword.text != "") {
+            loginUser()
+        } else {
+            ProgressHUD.showError("Email and Password is missing")
+        }
     }
 
     @IBAction func buttonRegisterPressed(_ sender: Any) {
-        print("register")
+        dismissKeyboard()
+        if (textFieldEmail.text != "" && textFieldPassword.text != "" && textFieldRepeatPassword.text != "") {
+            if textFieldPassword.text == textFieldRepeatPassword.text {
+                registerUser()
+            } else {
+                ProgressHUD.showError("Passwords don't match!")
+            }
+        } else {
+            ProgressHUD.showError("All fields are required!")
+        }
     }
 
     @IBAction func backgroundTap(_ sender: Any) {
-        print("background")
+        dismissKeyboard()
+    }
+
+    func loginUser() {
+        ProgressHUD.show("Login...")
+        FUser.loginUserWith(email: textFieldEmail.text!, password: textFieldPassword.text!) { (error) in
+            if error != nil {
+                ProgressHUD.showError(error!.localizedDescription)
+                return
+            }
+            self.goToApp()
+        }
+    }
+
+    func registerUser() {
+        print("register")
+    }
+
+    func dismissKeyboard() {
+        self.view.endEditing(false)
+    }
+
+    func cleanTextFields() {
+        textFieldEmail.text = ""
+        textFieldPassword.text = ""
+        textFieldRepeatPassword.text = ""
+    }
+
+    func goToApp() {
+        ProgressHUD.dismiss()
+        cleanTextFields()
+        dismissKeyboard()
+        print("show the app")
+        //present app
     }
 }
