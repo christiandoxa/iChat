@@ -20,6 +20,7 @@
 		9E20B66722E74BF300EDFA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E20B66622E74BF300EDFA89 /* Assets.xcassets */; };
 		9E20B66A22E74BF300EDFA89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E20B66822E74BF300EDFA89 /* LaunchScreen.storyboard */; };
 		9E20B67222E74EF600EDFA89 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20B67122E74EF600EDFA89 /* WelcomeViewController.swift */; };
+		9E2EF75022E9963400B50126 /* ProfileViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2EF74F22E9963400B50126 /* ProfileViewTableViewController.swift */; };
 		9EC3C9B422E87D6600ECF960 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC3C9B322E87D6600ECF960 /* SettingsTableViewController.swift */; };
 		9EC9F23722E8D3D20078BA69 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC9F23622E8D3D20078BA69 /* ChatsViewController.swift */; };
 		9ED0230722E825CF009CAE3C /* FinishRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED0230622E825CF009CAE3C /* FinishRegistrationViewController.swift */; };
@@ -42,6 +43,7 @@
 		9E20B66922E74BF300EDFA89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E20B66B22E74BF300EDFA89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E20B67122E74EF600EDFA89 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		9E2EF74F22E9963400B50126 /* ProfileViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTableViewController.swift; sourceTree = "<group>"; };
 		9EC3C9B322E87D6600ECF960 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		9EC9F23622E8D3D20078BA69 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		9ED0230622E825CF009CAE3C /* FinishRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishRegistrationViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				9EC3C9B322E87D6600ECF960 /* SettingsTableViewController.swift */,
 				2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */,
 				9EC9F23622E8D3D20078BA69 /* ChatsViewController.swift */,
+				9E2EF74F22E9963400B50126 /* ProfileViewTableViewController.swift */,
 				9E20B66322E74BF200EDFA89 /* Main.storyboard */,
 				9EF979E022E8A2E4009ABF53 /* CustomCells */,
 				9ED0230922E82664009CAE3C /* Classes */,
@@ -260,6 +263,7 @@
 			files = (
 				9E20B66022E74BF200EDFA89 /* AppDelegate.swift in Sources */,
 				9E20B67222E74EF600EDFA89 /* WelcomeViewController.swift in Sources */,
+				9E2EF75022E9963400B50126 /* ProfileViewTableViewController.swift in Sources */,
 				2F24BB0DAEC60C5FAEABEE79 /* FUser.swift in Sources */,
 				2F24B7E6A601EE23ECF0E551 /* Constants.swift in Sources */,
 				9EC3C9B422E87D6600ECF960 /* SettingsTableViewController.swift in Sources */,
