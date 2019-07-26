@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F24B1FFE8F7581EAA6C3C16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F24B01073EC99E7F1879010 /* GoogleService-Info.plist */; };
+		2F24B4D86AD168655ADF9365 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BCA9650B176F7CC8C7B1 /* Recent.swift */; };
 		2F24B7CCBE7A1826EA9DA438 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */; };
 		2F24B7E6A601EE23ECF0E551 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B53CDA89F2EE985CA25D /* Constants.swift */; };
 		2F24B8199665CC48537C6DA8 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B11FA3BE51387510FCBF /* CollectionReference.swift */; };
@@ -33,6 +34,7 @@
 		2F24B53CDA89F2EE985CA25D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F24B837C7BAB72C24551700 /* FUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		2F24B870830B49375E10E55A /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		2F24BCA9650B176F7CC8C7B1 /* Recent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.debug.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.debug.xcconfig"; sourceTree = "<group>"; };
 		83DAEAAC61C2CF4371F18911 /* Pods-iChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.release.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +81,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9E1A239122EAC75B003DA7B2 /* WelcomeViews */ = {
+			isa = PBXGroup;
+			children = (
+				9E20B67122E74EF600EDFA89 /* WelcomeViewController.swift */,
+				9ED0230622E825CF009CAE3C /* FinishRegistrationViewController.swift */,
+			);
+			path = WelcomeViews;
+			sourceTree = "<group>";
+		};
+		9E1A239222EAC7AE003DA7B2 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				9EC3C9B322E87D6600ECF960 /* SettingsTableViewController.swift */,
+				9EC9F23622E8D3D20078BA69 /* ChatsViewController.swift */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
+		9E1A239322EAC7D5003DA7B2 /* SecondaryViews */ = {
+			isa = PBXGroup;
+			children = (
+				2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */,
+				9E2EF74F22E9963400B50126 /* ProfileViewTableViewController.swift */,
+			);
+			path = SecondaryViews;
+			sourceTree = "<group>";
+		};
 		9E20B65322E74BF100EDFA89 = {
 			isa = PBXGroup;
 			children = (
@@ -102,13 +131,10 @@
 			isa = PBXGroup;
 			children = (
 				9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */,
-				9E20B67122E74EF600EDFA89 /* WelcomeViewController.swift */,
-				9ED0230622E825CF009CAE3C /* FinishRegistrationViewController.swift */,
-				9EC3C9B322E87D6600ECF960 /* SettingsTableViewController.swift */,
-				2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */,
-				9EC9F23622E8D3D20078BA69 /* ChatsViewController.swift */,
-				9E2EF74F22E9963400B50126 /* ProfileViewTableViewController.swift */,
 				9E20B66322E74BF200EDFA89 /* Main.storyboard */,
+				9E1A239122EAC75B003DA7B2 /* WelcomeViews */,
+				9E1A239322EAC7D5003DA7B2 /* SecondaryViews */,
+				9E1A239222EAC7AE003DA7B2 /* MainViews */,
 				9EF979E022E8A2E4009ABF53 /* CustomCells */,
 				9ED0230922E82664009CAE3C /* Classes */,
 				9ED0230822E8261B009CAE3C /* Helpers */,
@@ -133,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				2F24B837C7BAB72C24551700 /* FUser.swift */,
+				2F24BCA9650B176F7CC8C7B1 /* Recent.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -273,6 +300,7 @@
 				2F24BF29EC93C11F6E2F3461 /* HelperFunctions.swift in Sources */,
 				2F24BE887386E335EAB7382D /* UserTableViewCell.swift in Sources */,
 				2F24B7CCBE7A1826EA9DA438 /* UsersTableViewController.swift in Sources */,
+				2F24B4D86AD168655ADF9365 /* Recent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

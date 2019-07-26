@@ -23,9 +23,11 @@ class ProfileViewTableViewController: UITableViewController {
     }
 
     @IBAction func callButtonPressed(_ sender: Any) {
+        print("call user \(user!.fullname)")
     }
 
     @IBAction func chatButtonPressed(_ sender: Any) {
+        print("chat user \(user!.fullname)")
     }
 
     @IBAction func blockButtonPressed(_ sender: Any) {
