@@ -66,6 +66,46 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var tempRecent: NSDictionary!
+        if searchController.isActive && searchController.searchBar.text != "" {
+            tempRecent = filteredChats[indexPath.row]
+        } else {
+            tempRecent = recentChats[indexPath.row]
+        }
+        var muteTitle = "Unmute"
+        var mute = false
+        if (tempRecent[kMEMBERSTOPUSH] as! [String]).contains(FUser.currentId()) {
+            muteTitle = "Mute"
+            mute = true
+        }
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { action, indexPath in
+            self.recentChats.remove(at: indexPath.row)
+            deleteRecentChat(recentChatDictionary: tempRecent)
+            self.tableView.reloadData()
+        }
+        let muteAction = UITableViewRowAction(style: .default, title: muteTitle) { action, indexPath in
+            print("Mute \(indexPath)")
+        }
+        muteAction.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        return [deleteAction, muteAction]
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        var recent: NSDictionary!
+        if searchController.isActive && searchController.searchBar.text != "" {
+            recent = filteredChats[indexPath.row]
+        } else {
+            recent = recentChats[indexPath.row]
+        }
+        restartRecentChat(recent: recent)
+    }
+
     func loadRecentChats() {
         recentListener = reference(.Recent).whereField(kUSERID, isEqualTo: FUser.currentId())
                 .addSnapshotListener { snapshot, error in

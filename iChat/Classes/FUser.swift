@@ -490,3 +490,28 @@ func updateCurrentUserOneSignalId(newId: String) {
 func checkBlockedStatus(withUser: FUser) -> Bool {
     return withUser.blockedUsers.contains(FUser.currentId())
 }
+
+// Restart chat
+func restartRecentChat(recent: NSDictionary) {
+    if recent[kTYPE] as! String == kPRIVATE {
+        createRecent(members: recent[kMEMBERSTOPUSH] as! [String],
+                chatRoomId: recent[kCHATROOMID] as! String,
+                withUserUserName: recent[kWITHUSERUSERNAME] as! String,
+                type: recent[kPRIVATE] as! String,
+                users: [FUser.currentUser()!], avatarOfGroup: nil)
+    }
+    if recent[kTYPE] as! String == kGROUP {
+        createRecent(members: recent[kMEMBERSTOPUSH] as! [String],
+                chatRoomId: recent[kCHATROOMID] as! String,
+                withUserUserName: recent[kWITHUSERUSERNAME] as! String,
+                type: recent[kGROUP] as! String,
+                users: nil, avatarOfGroup: recent[kAVATAR] as? String)
+    }
+}
+
+// Delete recent
+func deleteRecentChat(recentChatDictionary: NSDictionary) {
+    if let recentId = recentChatDictionary[kRECENTID] {
+        reference(.Recent).document(recentId as! String).delete()
+    }
+}
