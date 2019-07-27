@@ -104,6 +104,9 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             recent = recentChats[indexPath.row]
         }
         restartRecentChat(recent: recent)
+        let chatVC = ChatViewController()
+        chatVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 
     func loadRecentChats() {

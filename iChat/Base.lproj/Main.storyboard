@@ -382,6 +382,21 @@
             </objects>
             <point key="canvasLocation" x="3508" y="-212.74362818590706"/>
         </scene>
+        <!--Messages View Controller-->
+        <scene sceneID="WlD-Yp-q8j">
+            <objects>
+                <viewController id="Wpc-QP-C7m" customClass="JSQMessagesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tsr-wG-67W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="d02-GV-E2d"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dae-3u-Uz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4780" y="-214"/>
+        </scene>
         <!--Users Table View Controller-->
         <scene sceneID="QGx-Af-8dX">
             <objects>
@@ -462,7 +477,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcY-Iw-ZaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4582" y="-213"/>
+            <point key="canvasLocation" x="5551" y="-213"/>
         </scene>
         <!--Profile View Table View Controller-->
         <scene sceneID="8fW-mR-wv6">
@@ -613,7 +628,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMM-A7-Cf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5349.6000000000004" y="-213.64317841079463"/>
+            <point key="canvasLocation" x="6319" y="-213"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gXe-6b-kuJ">
