@@ -106,6 +106,10 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         restartRecentChat(recent: recent)
         let chatVC = ChatViewController()
         chatVC.hidesBottomBarWhenPushed = true
+        chatVC.membersIds = (recent[kMEMBERS] as! [String])
+        chatVC.membersToPush = (recent[kMEMBERSTOPUSH] as! [String])
+        chatVC.chatRoomId = (recent[kCHATROOMID] as! String)
+        chatVC.titleName = (recent[kWITHUSERFULLNAME] as! String)
         navigationController?.pushViewController(chatVC, animated: true)
     }
 

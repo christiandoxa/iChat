@@ -12,6 +12,7 @@
 		2F24B7CCBE7A1826EA9DA438 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */; };
 		2F24B7E6A601EE23ECF0E551 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B53CDA89F2EE985CA25D /* Constants.swift */; };
 		2F24B8199665CC48537C6DA8 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B11FA3BE51387510FCBF /* CollectionReference.swift */; };
+		2F24BA08A37C6F1B4F667A9B /* OutgoingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */; };
 		2F24BB0DAEC60C5FAEABEE79 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B837C7BAB72C24551700 /* FUser.swift */; };
 		2F24BE887386E335EAB7382D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B870830B49375E10E55A /* UserTableViewCell.swift */; };
 		2F24BF29EC93C11F6E2F3461 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */; };
@@ -38,6 +39,7 @@
 		2F24B870830B49375E10E55A /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		2F24BCA9650B176F7CC8C7B1 /* Recent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingMessages.swift; sourceTree = "<group>"; };
 		44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.debug.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.debug.xcconfig"; sourceTree = "<group>"; };
 		83DAEAAC61C2CF4371F18911 /* Pods-iChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.release.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.release.xcconfig"; sourceTree = "<group>"; };
 		9E20B65C22E74BF200EDFA89 /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 			children = (
 				2F24B837C7BAB72C24551700 /* FUser.swift */,
 				2F24BCA9650B176F7CC8C7B1 /* Recent.swift */,
+				2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				2F24B7CCBE7A1826EA9DA438 /* UsersTableViewController.swift in Sources */,
 				9EA8EA4722EC237100296631 /* ChatViewController.swift in Sources */,
 				2F24B4D86AD168655ADF9365 /* Recent.swift in Sources */,
+				2F24BA08A37C6F1B4F667A9B /* OutgoingMessages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

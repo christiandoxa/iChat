@@ -16,6 +16,10 @@ import AVKit
 import FirebaseFirestore
 
 class ChatViewController: JSQMessagesViewController {
+    var chatRoomId: String!
+    var membersIds: [String]!
+    var membersToPush: [String]!
+    var titleName: String!
     var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(
             with: UIColor.jsq_messageBubbleBlue())
     var incomingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(
@@ -61,15 +65,62 @@ class ChatViewController: JSQMessagesViewController {
         optionMenu.addAction(shareVideo)
         optionMenu.addAction(shareLocation)
         optionMenu.addAction(cancelAction)
-        present(optionMenu, animated: true)
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            if let currentPopoverpresentioncontroller = optionMenu.popoverPresentationController {
+                currentPopoverpresentioncontroller.sourceView = inputToolbar.contentView
+                        .leftBarButtonItem
+                currentPopoverpresentioncontroller.sourceRect = inputToolbar.contentView
+                        .leftBarButtonItem.bounds
+                currentPopoverpresentioncontroller.permittedArrowDirections = .up
+                present(optionMenu, animated: true)
+            }
+        } else {
+            present(optionMenu, animated: true)
+        }
     }
 
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        if text != "" {
+            sendMessage(text: text, date: date, picture: nil, location: nil, video: nil, audio: nil)
+            updateSendButton(isSend: false)
+        } else {
+            print("audio message")
+        }
+    }
 
+    func sendMessage(text: String?, date: Date, picture: UIImage?, location: String?, video: NSURL?, audio: String?) {
+        var outgoingMessage: OutgoingMessages?
+        let currentUser = FUser.currentUser()
+        if let text = text {
+            outgoingMessage = OutgoingMessages(message: text,
+                    senderId: currentUser!.objectId, senderName: currentUser!.firstname,
+                    date: date, status: kDELIVERED, type: kTEXT)
+        }
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        finishSendingMessage()
+        outgoingMessage!.sendMessage(chatRoomId: chatRoomId,
+                messageDictionary: outgoingMessage!.messageDictionary,
+                membersIds: membersIds, membersToPush: membersToPush)
     }
 
     @objc func backAction() {
         navigationController?.popViewController(animated: true)
+    }
+
+    func updateSendButton(isSend: Bool) {
+        if isSend {
+            inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: "send"), for: .normal)
+        } else {
+            inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: "mic"), for: .normal)
+        }
+    }
+
+    override func textViewDidChange(_ textView: UITextView) {
+        if textView.text != "" {
+            updateSendButton(isSend: true)
+        } else {
+            updateSendButton(isSend: false)
+        }
     }
 }
 
