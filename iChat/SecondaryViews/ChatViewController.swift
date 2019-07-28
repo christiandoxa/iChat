@@ -28,6 +28,9 @@ class ChatViewController: JSQMessagesViewController {
     var membersIds: [String]!
     var membersToPush: [String]!
     var titleName: String!
+    var isGroup: Bool?
+    var group: NSDictionary?
+    var withUsers: [FUser] = []
     var messages: [JSQMessage] = []
     var objectMessages: [NSDictionary] = []
     var loadedMessages: [NSDictionary] = []
@@ -37,6 +40,26 @@ class ChatViewController: JSQMessagesViewController {
             with: UIColor.jsq_messageBubbleBlue())
     var incomingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(
             with: UIColor.jsq_messageBubbleLightGray())
+    let leftBarButtonView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        return view
+    }()
+    let avatarButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 10, width: 25, height: 25))
+        return button
+    }()
+    let titleLabel: UILabel = {
+        let title = UILabel(frame: CGRect(x: 30, y: 10, width: 140, height: 15))
+        title.textAlignment = .left
+        title.font = UIFont(name: title.font.fontName, size: 14)
+        return title
+    }()
+    let subtitleLabel: UILabel = {
+        let subTitle = UILabel(frame: CGRect(x: 30, y: 25, width: 140, height: 15))
+        subTitle.textAlignment = .left
+        subTitle.font = UIFont(name: subTitle.font.fontName, size: 10)
+        return subTitle
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +68,7 @@ class ChatViewController: JSQMessagesViewController {
                 style: .plain, target: self, action: #selector(backAction))]
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        setCustomTitle()
         loadMessages()
         senderId = FUser.currentId()
         senderDisplayName = FUser.currentUser()?.firstname
@@ -326,6 +350,22 @@ class ChatViewController: JSQMessagesViewController {
         navigationController?.popViewController(animated: true)
     }
 
+    @objc func infoButtonPressed() {
+        print("show image message")
+    }
+
+    @objc func showGroup() {
+        print("show group")
+    }
+
+    @objc func showUserProfile() {
+        let profileVC = UIStoryboard.init(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "profileView")
+                as! ProfileViewTableViewController
+        profileVC.user = withUsers.first!
+        navigationController?.pushViewController(profileVC, animated: true)
+    }
+
     override func textViewDidChange(_ textView: UITextView) {
         if textView.text != "" {
             updateSendButton(isSend: true)
@@ -340,6 +380,43 @@ class ChatViewController: JSQMessagesViewController {
         } else {
             inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: "mic"), for: .normal)
         }
+    }
+
+    func setCustomTitle() {
+        leftBarButtonView.addSubview(avatarButton)
+        leftBarButtonView.addSubview(titleLabel)
+        leftBarButtonView.addSubview(subtitleLabel)
+        let infoButton = UIBarButtonItem(image: UIImage(named: "info"), style: .plain, target: self, action: #selector(infoButtonPressed))
+        navigationItem.rightBarButtonItem = infoButton
+        let leftBarButtonItem = UIBarButtonItem(customView: leftBarButtonView)
+        navigationItem.leftBarButtonItems?.append(leftBarButtonItem)
+        if isGroup! {
+            avatarButton.addTarget(self, action: #selector(showGroup), for: .touchUpInside)
+        } else {
+            avatarButton.addTarget(self, action: #selector(showUserProfile), for: .touchUpInside)
+        }
+        getUsersFromFirestore(withIds: membersIds) { withUsers in
+            self.withUsers = withUsers
+            if !self.isGroup! {
+                self.setUIForSingleChat()
+            }
+        }
+    }
+
+    func setUIForSingleChat() {
+        let withUser = withUsers.first!
+        imageFromData(pictureData: withUser.avatar) { image in
+            if image != nil {
+                avatarButton.setImage(image!.circleMasked, for: .normal)
+            }
+        }
+        titleLabel.text = withUser.fullname
+        if withUser.isOnline {
+            subtitleLabel.text = "Online"
+        } else {
+            subtitleLabel.text = "Offline"
+        }
+        avatarButton.addTarget(self, action: #selector(showUserProfile), for: .touchUpInside)
     }
 
     func readTimeFrom(dateString: String) -> String {
