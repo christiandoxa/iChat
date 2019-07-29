@@ -82,10 +82,12 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let data = messages[indexPath.row]
-        if data.senderId == FUser.currentId() {
-            cell.textView.textColor = .white
-        } else {
-            cell.textView.textColor = .black
+        if cell.textView != nil {
+            if data.senderId == FUser.currentId() {
+                cell.textView.textColor = .white
+            } else {
+                cell.textView.textColor = .black
+            }
         }
         return cell
     }

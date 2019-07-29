@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F24B1FFE8F7581EAA6C3C16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F24B01073EC99E7F1879010 /* GoogleService-Info.plist */; };
 		2F24B4D86AD168655ADF9365 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BCA9650B176F7CC8C7B1 /* Recent.swift */; };
+		2F24B57EAA67AFFDF53CDEA2 /* PhotoMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */; };
 		2F24B7CCBE7A1826EA9DA438 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */; };
 		2F24B7E6A601EE23ECF0E551 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B53CDA89F2EE985CA25D /* Constants.swift */; };
 		2F24B8199665CC48537C6DA8 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B11FA3BE51387510FCBF /* CollectionReference.swift */; };
@@ -44,6 +45,7 @@
 		2F24B8FD71673A9E5982F464 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		2F24BCA9650B176F7CC8C7B1 /* Recent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		2F24BD68D8BFB0D44E04D347 /* IncomingMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingMessages.swift; sourceTree = "<group>"; };
+		2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMediaItem.swift; sourceTree = "<group>"; };
 		2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingMessages.swift; sourceTree = "<group>"; };
 		44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.debug.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */,
 				2F24BD68D8BFB0D44E04D347 /* IncomingMessages.swift */,
 				2F24B71813BDE0E679E18D25 /* Camera.swift */,
+				2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				2F24B9A6E74A2BD9390C13FF /* IncomingMessages.swift in Sources */,
 				2F24BA26BE5797C0CD5D24F0 /* Camera.swift in Sources */,
 				2F24BBBC0E1061F62378B03B /* Downloader.swift in Sources */,
+				2F24B57EAA67AFFDF53CDEA2 /* PhotoMediaItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
