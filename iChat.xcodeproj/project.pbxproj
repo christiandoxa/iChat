@@ -10,6 +10,7 @@
 		2F24B1FFE8F7581EAA6C3C16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F24B01073EC99E7F1879010 /* GoogleService-Info.plist */; };
 		2F24B4D86AD168655ADF9365 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BCA9650B176F7CC8C7B1 /* Recent.swift */; };
 		2F24B57EAA67AFFDF53CDEA2 /* PhotoMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */; };
+		2F24B62B125405C255ED9C37 /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B6E4CCFCDFF286D991C4 /* VideoMessage.swift */; };
 		2F24B7CCBE7A1826EA9DA438 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */; };
 		2F24B7E6A601EE23ECF0E551 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B53CDA89F2EE985CA25D /* Constants.swift */; };
 		2F24B8199665CC48537C6DA8 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B11FA3BE51387510FCBF /* CollectionReference.swift */; };
@@ -39,6 +40,7 @@
 		2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		2F24B11FA3BE51387510FCBF /* CollectionReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReference.swift; sourceTree = "<group>"; };
 		2F24B53CDA89F2EE985CA25D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2F24B6E4CCFCDFF286D991C4 /* VideoMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		2F24B71813BDE0E679E18D25 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		2F24B837C7BAB72C24551700 /* FUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		2F24B870830B49375E10E55A /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				2F24BD68D8BFB0D44E04D347 /* IncomingMessages.swift */,
 				2F24B71813BDE0E679E18D25 /* Camera.swift */,
 				2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */,
+				2F24B6E4CCFCDFF286D991C4 /* VideoMessage.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				2F24BA26BE5797C0CD5D24F0 /* Camera.swift in Sources */,
 				2F24BBBC0E1061F62378B03B /* Downloader.swift in Sources */,
 				2F24B57EAA67AFFDF53CDEA2 /* PhotoMediaItem.swift in Sources */,
+				2F24B62B125405C255ED9C37 /* VideoMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

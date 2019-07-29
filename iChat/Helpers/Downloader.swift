@@ -109,6 +109,33 @@ func uploadVideo(video: NSData, chatRoomId: String, view: UIView,
     }
 }
 
+func downloadVideo(videoUrl: String, completion:
+        @escaping (_ isReadyToPlay: Bool, _ videoFileName: String) -> Void) {
+    let videoURL = NSURL(string: videoUrl)
+    let videoFileName = (videoUrl.components(separatedBy: "%").last!)
+            .components(separatedBy: "?").first
+    if fileExistsAtPath(path: videoFileName!) {
+        completion(true, videoFileName!)
+    } else {
+        let downloadQueue = DispatchQueue(label: "videoDownloadQueue")
+        downloadQueue.async {
+            let data = NSData(contentsOf: videoURL! as URL)
+            if data != nil {
+                var docURL = getDocumentsUrl()
+                docURL = docURL.appendingPathComponent(videoFileName!, isDirectory: false)
+                data!.write(to: docURL, atomically: true)
+                DispatchQueue.main.async {
+                    completion(true, videoFileName!)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    print("no video in database")
+                }
+            }
+        }
+    }
+}
+
 func videoThumbnail(video: NSURL) -> UIImage {
     let asset = AVURLAsset(url: video as URL, options: nil)
     let imageGenerator = AVAssetImageGenerator(asset: asset)
