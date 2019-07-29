@@ -15,7 +15,8 @@ import AVFoundation
 import AVKit
 import FirebaseFirestore
 
-class ChatViewController: JSQMessagesViewController {
+class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDelegate,
+        UINavigationControllerDelegate {
     let legitTypes = [kAUDIO, kVIDEO, kTEXT, kLOCATION, kPICTURE]
     var typingListener: ListenerRegistration?
     var updatedChatListener: ListenerRegistration?
@@ -151,12 +152,13 @@ class ChatViewController: JSQMessagesViewController {
     }
 
     override func didPressAccessoryButton(_ sender: UIButton!) {
+        let camera = Camera(delegate_: self)
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let takePhotoOrVideo = UIAlertAction(title: "Camera", style: .default) { action in
             print("Camera")
         }
         let sharePhoto = UIAlertAction(title: "Photo Library", style: .default) { action in
-            print("Photo Lib")
+            camera.PresentPhotoLibrary(target: self, canEdit: true)
         }
         let shareVideo = UIAlertAction(title: "Video Library", style: .default) { action in
             print("Video Library")
@@ -210,6 +212,25 @@ class ChatViewController: JSQMessagesViewController {
             outgoingMessage = OutgoingMessages(message: text,
                     senderId: currentUser!.objectId, senderName: currentUser!.firstname,
                     date: date, status: kDELIVERED, type: kTEXT)
+        }
+        if let pic = picture {
+            uploadImage(image: pic, chatRoomId: chatRoomId,
+                    view: self.navigationController!.view) { imageLink in
+                if imageLink != nil {
+                    let text = kPICTURE
+                    outgoingMessage = OutgoingMessages(message: text,
+                            pictureLink: imageLink!, senderId: currentUser!.objectId,
+                            senderName: currentUser!.fullname, date: date,
+                            status: kDELIVERED, type: kPICTURE)
+                    JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                    self.finishSendingMessage()
+                    outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId,
+                            messageDictionary: outgoingMessage!.messageDictionary,
+                            membersIds: self.membersIds,
+                            membersToPush: self.membersToPush)
+                }
+            }
+            return
         }
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         finishSendingMessage()
@@ -417,6 +438,15 @@ class ChatViewController: JSQMessagesViewController {
             subtitleLabel.text = "Offline"
         }
         avatarButton.addTarget(self, action: #selector(showUserProfile), for: .touchUpInside)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
+    info: [UIImagePickerController.InfoKey: Any]) {
+        let video = info[.mediaURL] as? NSURL
+        let picture = info[.originalImage] as? UIImage
+        sendMessage(text: nil, date: Date(), picture: picture, location: nil,
+                video: video, audio: nil)
+        picker.dismiss(animated: true)
     }
 
     func readTimeFrom(dateString: String) -> String {
