@@ -78,6 +78,53 @@ func downloadImage(imageUrl: String, completion: @escaping (_ image: UIImage?) -
     }
 }
 
+func uploadVideo(video: NSData, chatRoomId: String, view: UIView,
+                 completion: @escaping (_ videoLink: String?) -> Void) {
+    let progressHUD = MBProgressHUD.showAdded(to: view, animated: true)
+    progressHUD.mode = .determinateHorizontalBar
+    let dateString = dateFormatter().string(from: Date())
+    let videoFileName = "VideoMessages/" + FUser.currentId() + "/" + chatRoomId + "/"
+            + dateString + ".mov"
+    let storageReference = storage.reference(forURL: kFILEREFERENCE)
+            .child(videoFileName)
+    var task: StorageUploadTask!
+    task = storageReference.putData(video as Data, metadata: nil) { metadata, error in
+        task.removeAllObservers()
+        progressHUD.hide(animated: true)
+        if error != nil {
+            print("error couldn't upload video \(error!.localizedDescription)")
+            return
+        }
+        storageReference.downloadURL { url, error in
+            guard let downloadUrl = url else {
+                completion(nil)
+                return
+            }
+            completion(downloadUrl.absoluteString)
+        }
+    }
+    task.observe(.progress) { snapshot in
+        progressHUD.progress = Float((snapshot.progress!.completedUnitCount))
+                / Float((snapshot.progress!.totalUnitCount))
+    }
+}
+
+func videoThumbnail(video: NSURL) -> UIImage {
+    let asset = AVURLAsset(url: video as URL, options: nil)
+    let imageGenerator = AVAssetImageGenerator(asset: asset)
+    imageGenerator.appliesPreferredTrackTransform = true
+    let time = CMTime(seconds: 0.5, preferredTimescale: 1000)
+    var actualTime = CMTime.zero
+    var image: CGImage?
+    do {
+        image = try imageGenerator.copyCGImage(at: time, actualTime: &actualTime)
+    } catch let error as NSError {
+        print(error.localizedDescription)
+    }
+    let thumbnail = UIImage(cgImage: image!)
+    return thumbnail
+}
+
 func fileInDocumentsDirectory(fileName: String) -> String {
     let fileUrl = getDocumentsUrl().appendingPathComponent(fileName)
     return fileUrl.path

@@ -160,10 +160,10 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             print("Camera")
         }
         let sharePhoto = UIAlertAction(title: "Photo Library", style: .default) { action in
-            camera.PresentPhotoLibrary(target: self, canEdit: true)
+            camera.PresentPhotoLibrary(target: self, canEdit: false)
         }
         let shareVideo = UIAlertAction(title: "Video Library", style: .default) { action in
-            print("Video Library")
+            camera.PresentVideoLibrary(target: self, canEdit: false)
         }
         let shareLocation = UIAlertAction(title: "Share Location", style: .default) { action in
             print("Share Location")
@@ -207,7 +207,8 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         collectionView.reloadData()
     }
 
-    func sendMessage(text: String?, date: Date, picture: UIImage?, location: String?, video: NSURL?, audio: String?) {
+    func sendMessage(text: String?, date: Date, picture: UIImage?, location: String?,
+                     video: NSURL?, audio: String?) {
         var outgoingMessage: OutgoingMessages?
         let currentUser = FUser.currentUser()
         if let text = text {
@@ -219,11 +220,34 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             uploadImage(image: pic, chatRoomId: chatRoomId,
                     view: self.navigationController!.view) { imageLink in
                 if imageLink != nil {
-                    let text = kPICTURE
+                    let text = "[\(kPICTURE)]"
                     outgoingMessage = OutgoingMessages(message: text,
                             pictureLink: imageLink!, senderId: currentUser!.objectId,
                             senderName: currentUser!.fullname, date: date,
                             status: kDELIVERED, type: kPICTURE)
+                    JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                    self.finishSendingMessage()
+                    outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId,
+                            messageDictionary: outgoingMessage!.messageDictionary,
+                            membersIds: self.membersIds,
+                            membersToPush: self.membersToPush)
+                }
+            }
+            return
+        }
+        if let video = video {
+            let videoData = NSData(contentsOfFile: video.path!)
+            let dataThumbnail = videoThumbnail(video: video)
+                    .jpegData(compressionQuality: 0.3)
+            uploadVideo(video: videoData!, chatRoomId: chatRoomId,
+                    view: navigationController!.view) { videoLink in
+                if videoLink != nil {
+                    let text = "[\(kVIDEO)]"
+                    outgoingMessage = OutgoingMessages(message: text,
+                            video: videoLink!, thumbNail: dataThumbnail! as NSData,
+                            senderId: currentUser!.objectId,
+                            senderName: currentUser!.fullname, date: date,
+                            status: kDELIVERED, type: kVIDEO)
                     JSQSystemSoundPlayer.jsq_playMessageSentSound()
                     self.finishSendingMessage()
                     outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId,
