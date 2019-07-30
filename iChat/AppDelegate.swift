@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var authListener: AuthStateDidChangeListenerHandle?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+    launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         //AutoLogin
         authListener = Auth.auth().addStateDidChangeListener { auth, user in
@@ -53,8 +54,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func goToApp() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID: FUser.currentId()])
-        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
+        NotificationCenter.default.post(name: NSNotification.Name(
+                rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil,
+                userInfo: [kUSERID: FUser.currentId()])
+        let mainView = UIStoryboard.init(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "mainApplication")
+                as! UITabBarController
         self.window?.rootViewController = mainView
     }
 }

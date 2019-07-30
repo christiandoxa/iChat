@@ -207,6 +207,32 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         collectionView.reloadData()
     }
 
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        print("tap on message at \(indexPath!)")
+        let messageDictionary = objectMessages[indexPath.row]
+        let messageType = messageDictionary[kTYPE] as! String
+        switch messageType {
+        case kPICTURE:
+            print("pic mess tapped")
+        case kLOCATION:
+            print("loc mess tapped")
+        case kVIDEO:
+            print("video mess tapped")
+            let message = messages[indexPath.row]
+            let mediaItem = message.media as! VideoMessage
+            let player = AVPlayer(url: mediaItem.fileURL! as URL)
+            let moviePlayer = AVPlayerViewController()
+            let session = AVAudioSession.sharedInstance()
+            try! session.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
+            moviePlayer.player = player
+            present(moviePlayer, animated: true) {
+                moviePlayer.player!.play()
+            }
+        default:
+            print("unknown mess type")
+        }
+    }
+
     func sendMessage(text: String?, date: Date, picture: UIImage?, location: String?,
                      video: NSURL?, audio: String?) {
         var outgoingMessage: OutgoingMessages?
