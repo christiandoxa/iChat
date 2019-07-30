@@ -26,6 +26,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     var minMessagesNumber = 0
     var loadOld = false
     var loadedMessagesCount = 0
+    var typingCounter = 0
     var chatRoomId: String!
     var membersIds: [String]!
     var membersToPush: [String]!
@@ -40,7 +41,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     var initialLoadComplete = false
     var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(
             with: UIColor.jsq_messageBubbleBlue())
-    var incomingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(
+    var incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(
             with: UIColor.jsq_messageBubbleLightGray())
     let leftBarButtonView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
@@ -65,6 +66,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        createTypingObserver()
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Back"),
                 style: .plain, target: self, action: #selector(backAction))]
@@ -334,7 +336,21 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     }
 
     func loadMessages() {
-        // get last eleven messages
+        updatedChatListener = reference(.Message).document(FUser.currentId())
+                .collection(chatRoomId).addSnapshotListener { snapshot, error in
+                    guard snapshot != nil else {
+                        return
+                    }
+                    if !snapshot!.isEmpty {
+                        snapshot!.documentChanges.forEach { diff in
+                            if diff.type == .modified {
+                                self.updateMessage(
+                                        messageDictionary: diff.document.data()
+                                                as NSDictionary)
+                            }
+                        }
+                    }
+                }
         reference(.Message).document(FUser.currentId()).collection(chatRoomId)
                 .order(by: kDATE, descending: true).limit(to: 11)
                 .getDocuments { snapshot, error in
@@ -416,7 +432,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
         for i in minMessagesNumber..<maxMessagesNumber {
             let messageDictionary = loadedMessages[i]
-            insertInitialLoadMessages(messageDictionary: messageDictionary)
+            _ = insertInitialLoadMessages(messageDictionary: messageDictionary)
             loadedMessagesCount += 1
         }
         showLoadEarlierMessagesHeader = (loadedMessagesCount != loadedMessages.count)
@@ -425,8 +441,8 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     func insertInitialLoadMessages(messageDictionary: NSDictionary) -> Bool {
         let incomingMessage = IncomingMessages(collectionView_: collectionView)
         if (messageDictionary[kSENDERID] as! String) != FUser.currentId() {
-            //update message status
-
+            OutgoingMessages.updateMessage(withId: messageDictionary[kMESSAGEID]
+                    as! String, chatRoomId: chatRoomId, memberIds: membersIds)
         }
         let message = incomingMessage.createMessage(
                 messageDictionary: messageDictionary, chatRoomId: chatRoomId)
@@ -435,6 +451,16 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             messages.append(message!)
         }
         return isIncoming(messageDictionary: messageDictionary)
+    }
+
+    func updateMessage(messageDictionary: NSDictionary) {
+        for index in 0..<objectMessages.count {
+            let temp = objectMessages[index]
+            if messageDictionary[kMESSAGEID] as! String == temp[kMESSAGEID] as! String {
+                objectMessages[index] = messageDictionary
+                collectionView.reloadData()
+            }
+        }
     }
 
     func loadMoreMessages(maxNumber: Int, minNumber: Int) {
@@ -479,6 +505,53 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
                 as! ProfileViewTableViewController
         profileVC.user = withUsers.first!
         navigationController?.pushViewController(profileVC, animated: true)
+    }
+
+    func createTypingObserver() {
+        typingListener = reference(.Typing).document(chatRoomId)
+                .addSnapshotListener { snapshot, error in
+                    guard snapshot != nil else {
+                        return
+                    }
+                    if snapshot!.exists {
+                        for data in snapshot!.data()! {
+                            if data.key != FUser.currentId() {
+                                let typing = data.value as! Bool
+                                self.showTypingIndicator = typing
+                                if typing {
+                                    self.scrollToBottom(animated: true)
+                                }
+                            }
+                        }
+                    } else {
+                        reference(.Typing).document(self.chatRoomId).setData([FUser
+                                .currentId(): false])
+                    }
+                }
+    }
+
+    func typingCounterStart() {
+        typingCounter += 1
+        typingCounterSave(typing: true)
+        perform(#selector(typingCounterStop), with: nil, afterDelay: 2.0)
+    }
+
+    @objc func typingCounterStop() {
+        typingCounter -= 1
+        if typingCounter == 0 {
+            typingCounterSave(typing: false)
+        }
+    }
+
+    func typingCounterSave(typing: Bool) {
+        reference(.Typing).document(chatRoomId).updateData([
+            FUser.currentId(): typing
+        ])
+    }
+
+    override func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        typingCounterStart()
+        return true
     }
 
     override func textViewDidChange(_ textView: UITextView) {

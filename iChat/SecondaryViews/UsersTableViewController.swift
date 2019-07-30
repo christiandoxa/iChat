@@ -94,7 +94,7 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating, 
             let users = self.allUsersGrouped[sectionTitle]
             user = users![indexPath.row]
         }
-        startPrivateChat(user1: FUser.currentUser()!, user2: user)
+        _ = startPrivateChat(user1: FUser.currentUser()!, user2: user)
     }
 
     func loadUsers(filter: String) {
