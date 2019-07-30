@@ -45,10 +45,8 @@ func uploadImage(image: UIImage, chatRoomId: String, view: UIView,
 
 func downloadImage(imageUrl: String, completion: @escaping (_ image: UIImage?) -> Void) {
     let imageURL = NSURL(string: imageUrl)
-    print(imageUrl)
     let imageFileName = (imageUrl.components(separatedBy: "%").last!)
             .components(separatedBy: "?").first
-    print("file name \(imageFileName!)")
     if fileExistsAtPath(path: imageFileName!) {
         if let contentsOfFile = UIImage(contentsOfFile: fileInDocumentsDirectory(fileName: imageFileName!)) {
             completion(contentsOfFile)
@@ -130,6 +128,64 @@ func downloadVideo(videoUrl: String, completion:
             } else {
                 DispatchQueue.main.async {
                     print("no video in database")
+                }
+            }
+        }
+    }
+}
+
+func uploadAudio(audioPath: String, chatRoomId: String, view: UIView,
+                 completion: @escaping (_ audioLink: String?) -> Void) {
+    let progressHUD = MBProgressHUD.showAdded(to: view, animated: true)
+    progressHUD.mode = .determinateHorizontalBar
+    let dateString = dateFormatter().string(from: Date())
+    let audioFileName = "AudioMessages/" + FUser.currentId() + "/" + chatRoomId + "/"
+            + dateString + ".m4a"
+    let audio = NSData(contentsOfFile: audioPath)
+    let storageReference = storage.reference(forURL: kFILEREFERENCE)
+            .child(audioFileName)
+    var task: StorageUploadTask!
+    task = storageReference.putData(audio! as Data, metadata: nil) { metadata, error in
+        task.removeAllObservers()
+        progressHUD.hide(animated: true)
+        if error != nil {
+            print("error couldn't upload audio \(error!.localizedDescription)")
+            return
+        }
+        storageReference.downloadURL { url, error in
+            guard let downloadUrl = url else {
+                completion(nil)
+                return
+            }
+            completion(downloadUrl.absoluteString)
+        }
+    }
+    task.observe(.progress) { snapshot in
+        progressHUD.progress = Float((snapshot.progress!.completedUnitCount))
+                / Float((snapshot.progress!.totalUnitCount))
+    }
+}
+
+func downloadAudio(audioUrl: String, completion: @escaping (_ audioFileName: String?) -> Void) {
+    let audioURL = NSURL(string: audioUrl)
+    let audioFileName = (audioUrl.components(separatedBy: "%").last!)
+            .components(separatedBy: "?").first
+    if fileExistsAtPath(path: audioFileName!) {
+        completion(audioFileName)
+    } else {
+        let downloadQueue = DispatchQueue(label: "audioDownloadQueue")
+        downloadQueue.async {
+            let data = NSData(contentsOf: audioURL! as URL)
+            if data != nil {
+                var docURL = getDocumentsUrl()
+                docURL = docURL.appendingPathComponent(audioFileName!, isDirectory: false)
+                data!.write(to: docURL, atomically: true)
+                DispatchQueue.main.async {
+                    completion(audioFileName)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    print("no audio in database")
                 }
             }
         }

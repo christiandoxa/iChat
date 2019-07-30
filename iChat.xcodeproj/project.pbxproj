@@ -19,6 +19,7 @@
 		2F24BA26BE5797C0CD5D24F0 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B71813BDE0E679E18D25 /* Camera.swift */; };
 		2F24BB0DAEC60C5FAEABEE79 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B837C7BAB72C24551700 /* FUser.swift */; };
 		2F24BBBC0E1061F62378B03B /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B8FD71673A9E5982F464 /* Downloader.swift */; };
+		2F24BBFE520A4266E0C30765 /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B4E2E6D3116F8092036B /* AudioViewController.swift */; };
 		2F24BE887386E335EAB7382D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B870830B49375E10E55A /* UserTableViewCell.swift */; };
 		2F24BF29EC93C11F6E2F3461 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */; };
 		46C4C9AB332801A4A59B39AD /* Pods_iChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86586CD8D9CB56B7275CD9C /* Pods_iChat.framework */; };
@@ -39,6 +40,7 @@
 		2F24B01073EC99E7F1879010 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		2F24B11FA3BE51387510FCBF /* CollectionReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReference.swift; sourceTree = "<group>"; };
+		2F24B4E2E6D3116F8092036B /* AudioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		2F24B53CDA89F2EE985CA25D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F24B6E4CCFCDFF286D991C4 /* VideoMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		2F24B71813BDE0E679E18D25 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				2F24B71813BDE0E679E18D25 /* Camera.swift */,
 				2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */,
 				2F24B6E4CCFCDFF286D991C4 /* VideoMessage.swift */,
+				2F24B4E2E6D3116F8092036B /* AudioViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				2F24BBBC0E1061F62378B03B /* Downloader.swift in Sources */,
 				2F24B57EAA67AFFDF53CDEA2 /* PhotoMediaItem.swift in Sources */,
 				2F24B62B125405C255ED9C37 /* VideoMessage.swift in Sources */,
+				2F24BBFE520A4266E0C30765 /* AudioViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

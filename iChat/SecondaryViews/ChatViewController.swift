@@ -16,7 +16,7 @@ import AVKit
 import FirebaseFirestore
 
 class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDelegate,
-        UINavigationControllerDelegate {
+        UINavigationControllerDelegate, IQAudioRecorderViewControllerDelegate {
     let legitTypes = [kAUDIO, kVIDEO, kTEXT, kLOCATION, kPICTURE]
     var typingListener: ListenerRegistration?
     var updatedChatListener: ListenerRegistration?
@@ -157,7 +157,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         let camera = Camera(delegate_: self)
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let takePhotoOrVideo = UIAlertAction(title: "Camera", style: .default) { action in
-            print("Camera")
+            camera.PresentMultiCamera(target: self, canEdit: false)
         }
         let sharePhoto = UIAlertAction(title: "Photo Library", style: .default) { action in
             camera.PresentPhotoLibrary(target: self, canEdit: false)
@@ -198,7 +198,8 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             sendMessage(text: text, date: date, picture: nil, location: nil, video: nil, audio: nil)
             updateSendButton(isSend: false)
         } else {
-            print("audio message")
+            let audioVC = AudioViewController(delegate_: self)
+            audioVC.presentAudioRecorder(target: self)
         }
     }
 
@@ -213,11 +214,14 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         let messageType = messageDictionary[kTYPE] as! String
         switch messageType {
         case kPICTURE:
-            print("pic mess tapped")
+            let message = messages[indexPath.row]
+            let mediaItem = message.media as! JSQPhotoMediaItem
+            let photos = IDMPhoto.photos(withImages: [mediaItem.image!])
+            let browser = IDMPhotoBrowser(photos: photos)
+            present(browser!, animated: true)
         case kLOCATION:
             print("loc mess tapped")
         case kVIDEO:
-            print("video mess tapped")
             let message = messages[indexPath.row]
             let mediaItem = message.media as! VideoMessage
             let player = AVPlayer(url: mediaItem.fileURL! as URL)
@@ -274,6 +278,25 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
                             senderId: currentUser!.objectId,
                             senderName: currentUser!.fullname, date: date,
                             status: kDELIVERED, type: kVIDEO)
+                    JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                    self.finishSendingMessage()
+                    outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId,
+                            messageDictionary: outgoingMessage!.messageDictionary,
+                            membersIds: self.membersIds,
+                            membersToPush: self.membersToPush)
+                }
+            }
+            return
+        }
+        if let audioPath = audio {
+            uploadAudio(audioPath: audioPath, chatRoomId: chatRoomId,
+                    view: navigationController!.view) { audioLink in
+                if audioLink != nil {
+                    let text = "[\(kAUDIO)]"
+                    outgoingMessage = OutgoingMessages(message: text, audio: audioLink!,
+                            senderId: currentUser!.objectId,
+                            senderName: currentUser!.fullname, date: date,
+                            status: kDELIVERED, type: kAUDIO)
                     JSQSystemSoundPlayer.jsq_playMessageSentSound()
                     self.finishSendingMessage()
                     outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId,
@@ -453,6 +476,16 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         } else {
             inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: "mic"), for: .normal)
         }
+    }
+
+    func audioRecorderController(_ controller: IQAudioRecorderViewController, didFinishWithAudioAtPath filePath: String) {
+        controller.dismiss(animated: true)
+        sendMessage(text: nil, date: Date(), picture: nil, location: nil, video: nil,
+                audio: filePath)
+    }
+
+    func audioRecorderControllerDidCancel(_ controller: IQAudioRecorderViewController) {
+        controller.dismiss(animated: true)
     }
 
     func setCustomTitle() {
