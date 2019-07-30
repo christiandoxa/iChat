@@ -213,7 +213,6 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     }
 
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
-        print("tap on message at \(indexPath!)")
         let messageDictionary = objectMessages[indexPath.row]
         let messageType = messageDictionary[kTYPE] as! String
         switch messageType {
@@ -224,14 +223,21 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             let browser = IDMPhotoBrowser(photos: photos)
             present(browser!, animated: true)
         case kLOCATION:
-            print("loc mess tapped")
+            let message = messages[indexPath.row]
+            let mediaItem = message.media as! JSQLocationMediaItem
+            let mapView = UIStoryboard(name: "Main", bundle: nil)
+                    .instantiateViewController(withIdentifier: "MapViewController")
+                    as! MapViewController
+            mapView.location = mediaItem.location
+            navigationController?.pushViewController(mapView, animated: true)
         case kVIDEO:
             let message = messages[indexPath.row]
             let mediaItem = message.media as! VideoMessage
             let player = AVPlayer(url: mediaItem.fileURL! as URL)
             let moviePlayer = AVPlayerViewController()
             let session = AVAudioSession.sharedInstance()
-            try! session.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
+            try! session.setCategory(.playAndRecord, mode: .default,
+                    options: .defaultToSpeaker)
             moviePlayer.player = player
             present(moviePlayer, animated: true) {
                 moviePlayer.player!.play()
