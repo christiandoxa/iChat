@@ -17,6 +17,7 @@ import FirebaseFirestore
 
 class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDelegate,
         UINavigationControllerDelegate, IQAudioRecorderViewControllerDelegate {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let legitTypes = [kAUDIO, kVIDEO, kTEXT, kLOCATION, kPICTURE]
     var typingListener: ListenerRegistration?
     var updatedChatListener: ListenerRegistration?
@@ -166,7 +167,10 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             camera.PresentVideoLibrary(target: self, canEdit: false)
         }
         let shareLocation = UIAlertAction(title: "Share Location", style: .default) { action in
-            print("Share Location")
+            if self.haveAccessToUserLocation() {
+                self.sendMessage(text: nil, date: Date(), picture: nil,
+                        location: kLOCATION, video: nil, audio: nil)
+            }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
         }
@@ -306,6 +310,15 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
                 }
             }
             return
+        }
+        if location != nil {
+            let lat: NSNumber = NSNumber(value: appDelegate.coordinates!.latitude)
+            let long: NSNumber = NSNumber(value: appDelegate.coordinates!.longitude)
+            let text = "[\(kLOCATION)]"
+            outgoingMessage = OutgoingMessages(message: text, latitude: lat,
+                    longitude: long, senderId: currentUser!.objectId,
+                    senderName: currentUser!.fullname, date: date, status: kDELIVERED,
+                    type: kLOCATION)
         }
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         finishSendingMessage()
@@ -532,6 +545,14 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         sendMessage(text: nil, date: Date(), picture: picture, location: nil,
                 video: video, audio: nil)
         picker.dismiss(animated: true)
+    }
+
+    func haveAccessToUserLocation() -> Bool {
+        if appDelegate.locationManager != nil {
+            return true
+        }
+        ProgressHUD.showError("Please give access to location in Settings")
+        return false
     }
 
     func readTimeFrom(dateString: String) -> String {
