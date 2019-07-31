@@ -89,7 +89,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.reloadData()
         }
         let muteAction = UITableViewRowAction(style: .default, title: muteTitle) { action, indexPath in
-            print("Mute \(indexPath)")
+            self.updatePushMembers(recent: tempRecent, mute: mute)
         }
         muteAction.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         return [deleteAction, muteAction]
@@ -195,5 +195,18 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+
+    func updatePushMembers(recent: NSDictionary, mute: Bool) {
+        var membersToPush = recent[kMEMBERSTOPUSH] as! [String]
+        if mute {
+            let index = membersToPush.firstIndex(of: FUser.currentId())
+            membersToPush.remove(at: index!)
+        } else {
+            membersToPush.append(FUser.currentId())
+        }
+        updateExistingRecentWithNewValues(chatRoomId: recent[kCHATROOMID] as! String,
+                members: recent[kMEMBERS] as! [String],
+                withValues: [kMEMBERSTOPUSH: membersToPush])
     }
 }

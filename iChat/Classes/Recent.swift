@@ -150,3 +150,24 @@ func clearRecentCounterItem(recent: NSDictionary) {
         kCOUNTER: 0
     ])
 }
+
+func updateExistingRecentWithNewValues(chatRoomId: String, members: [String],
+                                       withValues: [String: Any]) {
+    reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId)
+            .getDocuments { snapshot, error in
+                guard snapshot != nil else {
+                    return
+                }
+                if !snapshot!.isEmpty {
+                    for recent in snapshot!.documents {
+                        let recent = recent.data() as NSDictionary
+                        updateRecent(recentId: recent[kRECENTID] as! String,
+                                withValues: withValues)
+                    }
+                }
+            }
+}
+
+func updateRecent(recentId: String, withValues: [String: Any]) {
+    reference(.Recent).document(recentId).updateData(withValues)
+}
