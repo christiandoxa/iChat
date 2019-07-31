@@ -39,6 +39,10 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     var loadedMessages: [NSDictionary] = []
     var allPictureMessages: [String] = []
     var initialLoadComplete = false
+    var jsqAvatarDictionary: NSMutableDictionary?
+    var avatarImageDictionary: NSMutableDictionary?
+    var showAvatars = true
+    var firstLoad: Bool?
     var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(
             with: UIColor.jsq_messageBubbleBlue())
     var incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(
@@ -72,6 +76,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
                 style: .plain, target: self, action: #selector(backAction))]
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        jsqAvatarDictionary = [:]
         setCustomTitle()
         loadMessages()
         senderId = FUser.currentId()
@@ -154,6 +159,18 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         } else {
             return 0.0
         }
+    }
+
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        let message = messages[indexPath.row]
+        var avatar: JSQMessageAvatarImageDataSource
+        if let testAvatar = jsqAvatarDictionary!.object(forKey: message.senderId!) {
+            avatar = testAvatar as! JSQMessageAvatarImageDataSource
+        } else {
+            avatar = JSQMessagesAvatarImageFactory.avatarImage(
+                    with: UIImage(named: "avatarPlaceholder"), diameter: 70)
+        }
+        return avatar
     }
 
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -488,6 +505,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     }
 
     @objc func backAction() {
+        removeListeners()
         navigationController?.popViewController(animated: true)
     }
 
@@ -595,6 +613,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
         getUsersFromFirestore(withIds: membersIds) { withUsers in
             self.withUsers = withUsers
+            self.getAvatarImages()
             if !self.isGroup! {
                 self.setUIForSingleChat()
             }
@@ -624,6 +643,53 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         sendMessage(text: nil, date: Date(), picture: picture, location: nil,
                 video: video, audio: nil)
         picker.dismiss(animated: true)
+    }
+
+    func getAvatarImages() {
+        if showAvatars {
+            collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 30, height: 30)
+            collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 30, height: 30)
+            avatarImageFrom(fUser: FUser.currentUser()!)
+            for user in withUsers {
+                avatarImageFrom(fUser: user)
+            }
+        }
+    }
+
+    func avatarImageFrom(fUser: FUser) {
+        if fUser.avatar != "" {
+            dataImageFromString(pictureString: fUser.avatar) { imageData in
+                if imageData == nil {
+                    return
+                }
+                if avatarImageDictionary != nil {
+                    avatarImageDictionary?.removeObject(forKey: fUser.objectId)
+                    avatarImageDictionary?.setObject(imageData!, forKey: fUser.objectId
+                            as NSCopying)
+                } else {
+                    avatarImageDictionary = [fUser.objectId: imageData!]
+                }
+                createJSQAvatars(avatarDictionary: avatarImageDictionary)
+            }
+        }
+    }
+
+    func createJSQAvatars(avatarDictionary: NSMutableDictionary?) {
+        let defaultAvatar = JSQMessagesAvatarImageFactory.avatarImage(
+                with: UIImage(named: "avatarPlaceholder"), diameter: 70)
+        if avatarDictionary != nil {
+            for userId in membersIds {
+                if let avatarImageData = avatarDictionary![userId] {
+                    let jsqAvatar = JSQMessagesAvatarImageFactory.avatarImage(
+                            with: UIImage(data: avatarImageData as! Data),
+                            diameter: 70)
+                    jsqAvatarDictionary!.setValue(jsqAvatar, forKey: userId)
+                } else {
+                    jsqAvatarDictionary!.setValue(defaultAvatar, forKey: userId)
+                }
+            }
+            collectionView.reloadData()
+        }
     }
 
     func haveAccessToUserLocation() -> Bool {
@@ -660,6 +726,18 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             return false
         } else {
             return true
+        }
+    }
+
+    func removeListeners() {
+        if typingListener != nil {
+            typingListener!.remove()
+        }
+        if newChatListener != nil {
+            newChatListener!.remove()
+        }
+        if updatedChatListener != nil {
+            updatedChatListener!.remove()
         }
     }
 }
