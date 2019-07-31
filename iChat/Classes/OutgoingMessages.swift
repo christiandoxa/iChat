@@ -135,6 +135,8 @@ class OutgoingMessages {
             reference(.Message).document(memberId).collection(chatRoomId)
                     .document(messageId).setData(messageDictionary as! [String: Any])
         }
+        updateRecent(chatRoomId: chatRoomId, lastMessage: messageDictionary[kMESSAGE]
+                as! String)
     }
 
     class func deleteMessage(withId: String, chatRoomId: String) {

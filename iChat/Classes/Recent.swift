@@ -97,3 +97,56 @@ func createRecentItems(userId: String, chatRoomId: String, members: [String],
     }
     localReference.setData(recent)
 }
+
+func updateRecent(chatRoomId: String, lastMessage: String) {
+    reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId)
+            .getDocuments { snapshot, error in
+                guard snapshot != nil else {
+                    return
+                }
+                if !snapshot!.isEmpty {
+                    for recent in snapshot!.documents {
+                        let currentRecent = recent.data() as NSDictionary
+                        updateRecentItem(recent: currentRecent,
+                                lastMessage: lastMessage)
+                    }
+                }
+            }
+}
+
+func updateRecentItem(recent: NSDictionary, lastMessage: String) {
+    let date = dateFormatter().string(from: Date())
+    var counter = recent[kCOUNTER] as! Int
+    if recent[kUSERID] as! String != FUser.currentId() {
+        counter += 1
+    }
+    let values = [
+        kLASTMESSAGE: lastMessage,
+        kCOUNTER: counter,
+        kDATE: date
+    ] as [String: Any]
+    reference(.Recent).document(recent[kRECENTID] as! String).updateData(values)
+}
+
+func clearRecentCounter(chatRoomId: String) {
+    reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId)
+            .getDocuments { snapshot, error in
+                guard snapshot != nil else {
+                    return
+                }
+                if !snapshot!.isEmpty {
+                    for recent in snapshot!.documents {
+                        let currentRecent = recent.data() as NSDictionary
+                        if currentRecent[kUSERID] as! String == FUser.currentId() {
+                            clearRecentCounterItem(recent: currentRecent)
+                        }
+                    }
+                }
+            }
+}
+
+func clearRecentCounterItem(recent: NSDictionary) {
+    reference(.Recent).document(recent[kRECENTID] as! String).updateData([
+        kCOUNTER: 0
+    ])
+}
