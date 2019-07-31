@@ -266,6 +266,21 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
     }
 
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapAvatarImageView avatarImageView: UIImageView!, at indexPath: IndexPath!) {
+        let senderId = messages[indexPath.row].senderId
+        var selectedUser: FUser?
+        if senderId == FUser.currentId() {
+            selectedUser = FUser.currentUser()
+        } else {
+            for user in withUsers {
+                if user.objectId == senderId {
+                    selectedUser = user
+                }
+            }
+        }
+        presentUserProfile(forUser: selectedUser!)
+    }
+
     func sendMessage(text: String?, date: Date, picture: UIImage?, location: String?,
                      video: NSURL?, audio: String?) {
         var outgoingMessage: OutgoingMessages?
@@ -383,6 +398,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
                     self.insertMessages()
                     self.finishReceivingMessage(animated: true)
                     self.initialLoadComplete = true
+                    self.getPictureMessages()
                     self.getOldMessagesInBackground()
                     self.listenForNewChats()
                 }
@@ -406,7 +422,8 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
                                 if let type = item[kTYPE] {
                                     if self.legitTypes.contains(type as! String) {
                                         if type as! String == kPICTURE {
-
+                                            self.addNewPictureMessageLink(
+                                                    link: item[kPICTURE] as! String)
                                         }
                                         if self.insertInitialLoadMessages(messageDictionary: item) {
                                             JSQSystemSoundPlayer.jsq_playMessageReceivedSound()
@@ -435,6 +452,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
                                 ascending: true)]) as! [NSDictionary]
                         self.loadedMessages = self.removeBadMessages(
                                 allMessages: sorted) + self.loadedMessages
+                        self.getPictureMessages()
                         self.maxMessagesNumber = self.loadedMessages.count - self.loadedMessagesCount - 1
                         self.minMessagesNumber = self.maxMessagesNumber - kNUMBEROFMESSAGES
                     }
@@ -510,7 +528,11 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     }
 
     @objc func infoButtonPressed() {
-        print("show image message")
+        let mediaVC = UIStoryboard.init(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "medView")
+                as! PicturesCollectionViewController
+        mediaVC.allImageLinks = allPictureMessages
+        navigationController?.pushViewController(mediaVC, animated: true)
     }
 
     @objc func showGroup() {
@@ -522,6 +544,14 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
                 .instantiateViewController(withIdentifier: "profileView")
                 as! ProfileViewTableViewController
         profileVC.user = withUsers.first!
+        navigationController?.pushViewController(profileVC, animated: true)
+    }
+
+    func presentUserProfile(forUser: FUser) {
+        let profileVC = UIStoryboard.init(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "profileView")
+                as! ProfileViewTableViewController
+        profileVC.user = forUser
         navigationController?.pushViewController(profileVC, animated: true)
     }
 
@@ -698,6 +728,19 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
         ProgressHUD.showError("Please give access to location in Settings")
         return false
+    }
+
+    func addNewPictureMessageLink(link: String) {
+        allPictureMessages.append(link)
+    }
+
+    func getPictureMessages() {
+        allPictureMessages = []
+        for message in loadedMessages {
+            if message[kTYPE] as! String == kPICTURE {
+                allPictureMessages.append(message[kPICTURE] as! String)
+            }
+        }
     }
 
     func readTimeFrom(dateString: String) -> String {

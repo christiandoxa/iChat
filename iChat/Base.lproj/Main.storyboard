@@ -541,7 +541,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fY6-Uq-ZmL">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fY6-Uq-ZmL">
                                                     <rect key="frame" x="172.5" y="7.5" width="30" height="50"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -573,6 +573,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="fY6-Uq-ZmL" firstAttribute="top" secondItem="r7z-iC-Rqf" secondAttribute="top" constant="7.5" id="46A-IK-MfJ"/>
                                                 <constraint firstItem="hKV-WC-Ea4" firstAttribute="centerY" secondItem="r7z-iC-Rqf" secondAttribute="centerY" id="ORb-OC-Kyx"/>
                                                 <constraint firstItem="hKV-WC-Ea4" firstAttribute="trailing" secondItem="r7z-iC-Rqf" secondAttribute="trailingMargin" id="OU4-yk-2Tk"/>
                                                 <constraint firstItem="d3X-X7-1qJ" firstAttribute="centerY" secondItem="r7z-iC-Rqf" secondAttribute="centerY" id="nNf-qF-oWD"/>
@@ -595,9 +596,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJR-8Z-C3n">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJR-8Z-C3n">
                                                     <rect key="frame" x="16" y="6" width="343" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <state key="normal" title="Block User">
                                                         <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -607,6 +607,12 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kJR-8Z-C3n" firstAttribute="leading" secondItem="QXt-8W-WOe" secondAttribute="leading" constant="16" id="0sI-qM-bu1"/>
+                                                <constraint firstAttribute="trailing" secondItem="kJR-8Z-C3n" secondAttribute="trailing" constant="16" id="3yw-Sg-RIO"/>
+                                                <constraint firstAttribute="bottom" secondItem="kJR-8Z-C3n" secondAttribute="bottom" constant="7.5" id="8pb-ZY-CRe"/>
+                                                <constraint firstItem="kJR-8Z-C3n" firstAttribute="top" secondItem="QXt-8W-WOe" secondAttribute="top" constant="6" id="uCZ-IM-Zih"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -658,6 +664,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Khs-04-ppm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7090.3999999999996" y="-212.74362818590706"/>
+        </scene>
+        <!--Pictures Collection View Controller-->
+        <scene sceneID="mKo-2L-U4r">
+            <objects>
+                <collectionViewController storyboardIdentifier="medView" id="EHV-bj-oUo" customClass="PicturesCollectionViewController" customModule="iChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sh7-8m-2yw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="plm-wo-guZ">
+                            <size key="itemSize" width="105" height="105"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="25" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="jmK-H7-SSo" customClass="PicturesCollectionViewCell" customModule="iChat" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="105" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3p4-hm-mzA">
+                                            <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="3p4-hm-mzA" firstAttribute="height" secondItem="jmK-H7-SSo" secondAttribute="height" id="Qv9-Fb-9rd"/>
+                                    <constraint firstItem="3p4-hm-mzA" firstAttribute="width" secondItem="jmK-H7-SSo" secondAttribute="width" id="gCb-Du-JTW"/>
+                                    <constraint firstItem="3p4-hm-mzA" firstAttribute="centerY" secondItem="jmK-H7-SSo" secondAttribute="centerY" id="pJL-OM-YPA"/>
+                                    <constraint firstItem="3p4-hm-mzA" firstAttribute="centerX" secondItem="jmK-H7-SSo" secondAttribute="centerX" id="wKt-qj-CN0"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="3p4-hm-mzA" id="6BK-om-bTI"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="EHV-bj-oUo" id="a9B-C3-X0G"/>
+                            <outlet property="delegate" destination="EHV-bj-oUo" id="8B4-IB-Yp1"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XzO-VQ-dai" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7090.3999999999996" y="498.80059970014997"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gXe-6b-kuJ">
