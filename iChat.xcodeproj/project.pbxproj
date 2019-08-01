@@ -38,6 +38,7 @@
 		9ECBCDE422F371610042D0C8 /* BlockedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECBCDE322F371610042D0C8 /* BlockedUsersViewController.swift */; };
 		9ECBCDE622F37C2A0042D0C8 /* BackgroundCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECBCDE522F37C2A0042D0C8 /* BackgroundCollectionViewController.swift */; };
 		9ECBCDE822F37C630042D0C8 /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECBCDE722F37C630042D0C8 /* BackgroundCollectionViewCell.swift */; };
+		9ECBCDEA22F388B10042D0C8 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECBCDE922F388B10042D0C8 /* EditProfileTableViewController.swift */; };
 		9ED0230722E825CF009CAE3C /* FinishRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED0230622E825CF009CAE3C /* FinishRegistrationViewController.swift */; };
 		9EE7763722F1D6FA0040AB89 /* PicturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7763622F1D6FA0040AB89 /* PicturesCollectionViewController.swift */; };
 		9EE7763922F1D77F0040AB89 /* PicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7763822F1D77F0040AB89 /* PicturesCollectionViewCell.swift */; };
@@ -78,6 +79,7 @@
 		9ECBCDE322F371610042D0C8 /* BlockedUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersViewController.swift; sourceTree = "<group>"; };
 		9ECBCDE522F37C2A0042D0C8 /* BackgroundCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewController.swift; sourceTree = "<group>"; };
 		9ECBCDE722F37C630042D0C8 /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
+		9ECBCDE922F388B10042D0C8 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		9ED0230622E825CF009CAE3C /* FinishRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishRegistrationViewController.swift; sourceTree = "<group>"; };
 		9EE7763622F1D6FA0040AB89 /* PicturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewController.swift; sourceTree = "<group>"; };
 		9EE7763822F1D77F0040AB89 /* PicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -141,6 +143,8 @@
 				9EE7763622F1D6FA0040AB89 /* PicturesCollectionViewController.swift */,
 				9ECBCDE322F371610042D0C8 /* BlockedUsersViewController.swift */,
 				9ECBCDE522F37C2A0042D0C8 /* BackgroundCollectionViewController.swift */,
+				2F24B7E4D9C725E3A9D2BEC1 /* T&CViewController.swift */,
+				9ECBCDE922F388B10042D0C8 /* EditProfileTableViewController.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -215,7 +219,6 @@
 				9E4DD92D22EB2561006A9E15 /* RecentChatsTableViewCell.swift */,
 				9EE7763822F1D77F0040AB89 /* PicturesCollectionViewCell.swift */,
 				9ECBCDE722F37C630042D0C8 /* BackgroundCollectionViewCell.swift */,
-				2F24B7E4D9C725E3A9D2BEC1 /* T&CViewController.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				9ECBCDE822F37C630042D0C8 /* BackgroundCollectionViewCell.swift in Sources */,
 				2F24B9A6E74A2BD9390C13FF /* IncomingMessages.swift in Sources */,
 				2F24BA26BE5797C0CD5D24F0 /* Camera.swift in Sources */,
+				9ECBCDEA22F388B10042D0C8 /* EditProfileTableViewController.swift in Sources */,
 				2F24BBBC0E1061F62378B03B /* Downloader.swift in Sources */,
 				2F24B57EAA67AFFDF53CDEA2 /* PhotoMediaItem.swift in Sources */,
 				2F24B62B125405C255ED9C37 /* VideoMessage.swift in Sources */,
