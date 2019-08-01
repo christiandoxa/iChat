@@ -14,6 +14,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var deleteButtonOutlet: UIButton!
     @IBOutlet weak var showAvatarStatusSwitch: UISwitch!
+    @IBOutlet weak var versionLabel: UILabel!
     var avatarSwitchStatus = false
     let userDefaults = UserDefaults.standard
     var firstLoad: Bool?
@@ -32,7 +33,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -134,6 +135,10 @@ class SettingsTableViewController: UITableViewController {
                     avatarImageView.image = avatarImage!.circleMasked
                 }
             }
+        }
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
+                as? String {
+            versionLabel.text = version
         }
     }
 
