@@ -79,6 +79,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         createTypingObserver()
+        JSQMessagesCollectionViewCell.registerMenuAction(#selector(delete))
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Back"),
                 style: .plain, target: self, action: #selector(backAction))]
@@ -287,6 +288,34 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             }
         }
         presentUserProfile(forUser: selectedUser!)
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        super.collectionView(collectionView, shouldShowMenuForItemAt: indexPath)
+        return true
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        if messages[indexPath.row].isMediaMessage {
+            if action.description == "delete:" {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            if action.description == "delete:" || action.description == "copy:" {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
+        let messageId = objectMessages[indexPath.row][kMESSAGEID] as! String
+        objectMessages.remove(at: indexPath.row)
+        messages.remove(at: indexPath.row)
+        OutgoingMessages.deleteMessage(withId: messageId, chatRoomId: chatRoomId)
     }
 
     func sendMessage(text: String?, date: Date, picture: UIImage?, location: String?,

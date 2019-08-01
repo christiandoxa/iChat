@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class ProfileViewTableViewController: UITableViewController {
     @IBOutlet weak var fullNameLabel: UILabel!
@@ -27,7 +28,15 @@ class ProfileViewTableViewController: UITableViewController {
     }
 
     @IBAction func chatButtonPressed(_ sender: Any) {
-        print("chat user \(user!.fullname)")
+        let chatVC = ChatViewController()
+        chatVC.titleName = user!.fullname
+        chatVC.membersToPush = [FUser.currentId(), user!.objectId]
+        chatVC.membersIds = [FUser.currentId(), user!.objectId]
+        chatVC.chatRoomId = startPrivateChat(user1: FUser.currentUser()!,
+                user2: user!)
+        chatVC.isGroup = false
+        chatVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 
     @IBAction func blockButtonPressed(_ sender: Any) {
@@ -37,7 +46,6 @@ class ProfileViewTableViewController: UITableViewController {
                     .firstIndex(of: user!.objectId)!)
         } else {
             currentBlockedIds.append(user!.objectId)
-            blockUser(userToBlock: user!)
         }
         updateCurrentUserInFirestore(withValues: [kBLOCKEDUSERID: currentBlockedIds]) { error in
             if error != nil {
@@ -46,6 +54,7 @@ class ProfileViewTableViewController: UITableViewController {
             }
             self.updateBlockStatus()
         }
+        blockUser(userToBlock: user!)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
