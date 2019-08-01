@@ -37,6 +37,7 @@ class ProfileViewTableViewController: UITableViewController {
                     .firstIndex(of: user!.objectId)!)
         } else {
             currentBlockedIds.append(user!.objectId)
+            blockUser(userToBlock: user!)
         }
         updateCurrentUserInFirestore(withValues: [kBLOCKEDUSERID: currentBlockedIds]) { error in
             if error != nil {

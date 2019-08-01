@@ -485,12 +485,6 @@ func updateCurrentUserOneSignalId(newId: String) {
     }
 }
 
-//MARK: Check User block status
-
-func checkBlockedStatus(withUser: FUser) -> Bool {
-    return withUser.blockedUsers.contains(FUser.currentId())
-}
-
 // Restart chat
 func restartRecentChat(recent: NSDictionary) {
     if recent[kTYPE] as! String == kPRIVATE {
