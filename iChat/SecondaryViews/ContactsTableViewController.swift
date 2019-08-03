@@ -131,7 +131,48 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     //MARK: TableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        tableView.deselectRow(at: indexPath, animated: true)
+        let sectionTitle = sectionTitleList[indexPath.section]
+        let userToChat: FUser
+        if searchController.isActive && searchController.searchBar.text != "" {
+            userToChat = filteredMatchedUsers[indexPath.row]
+        } else {
+            let users = allUsersGrouped[sectionTitle]
+            userToChat = users![indexPath.row]
+        }
+        if !isGroup {
+            if !checkBlockedStatus(withUser: userToChat) {
+                let chatVC = ChatViewController()
+                chatVC.titleName = userToChat.fullname
+                chatVC.membersIds = [FUser.currentId(), userToChat.objectId]
+                chatVC.membersToPush = [FUser.currentId(), userToChat.objectId]
+                chatVC.chatRoomId = startPrivateChat(user1: FUser.currentUser()!,
+                        user2: userToChat)
+                chatVC.isGroup = false
+                chatVC.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(chatVC, animated: true)
+            } else {
+                ProgressHUD.showError("This user is not available for chat")
+            }
+        } else {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                if cell.accessoryType == .checkmark {
+                    cell.accessoryType = .none
+                } else {
+                    cell.accessoryType = .checkmark
+                }
+            }
+            let selected = memberIdsOfGroupChat.contains(userToChat.objectId)
+            if selected {
+                let objectIndex = memberIdsOfGroupChat.firstIndex(of: userToChat.objectId)
+                memberIdsOfGroupChat.remove(at: objectIndex!)
+                membersOfGroupChat.remove(at: objectIndex!)
+            } else {
+                memberIdsOfGroupChat.append(userToChat.objectId)
+                membersOfGroupChat.append(userToChat)
+            }
+            navigationItem.rightBarButtonItem?.isEnabled = memberIdsOfGroupChat.count > 0
+        }
     }
 
 
@@ -140,7 +181,10 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     }
 
     @objc func searchNearbyButtonPressed() {
-        print("search nearby")
+        let userVC = UIStoryboard.init(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "usersTableView")
+                as! UsersTableViewController
+        navigationController?.pushViewController(userVC, animated: true)
     }
 
     @objc func inviteButtonPressed() {
