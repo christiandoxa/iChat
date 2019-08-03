@@ -38,10 +38,11 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     @IBAction func createNewChatButtonPressed(_ sender: Any) {
-        let userVC = UIStoryboard.init(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "usersTableView")
-                as! UsersTableViewController
-        self.navigationController?.pushViewController(userVC, animated: true)
+        selectUserForChat(isGroup: false)
+    }
+
+    @objc func groupButtonPressed() {
+        selectUserForChat(isGroup: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -152,10 +153,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.tableHeaderView = headerView
     }
 
-    @objc func groupButtonPressed() {
-        print("group")
-    }
-
     func didTapAvatarImage(indexPath: IndexPath) {
         var recentChat: NSDictionary
         if searchController.isActive && searchController.searchBar.text != "" {
@@ -195,6 +192,14 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+
+    func selectUserForChat(isGroup: Bool) {
+        let contactsVC = UIStoryboard.init(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "contactsView")
+                as! ContactsTableViewController
+        contactsVC.isGroup = isGroup
+        self.navigationController?.pushViewController(contactsVC, animated: true)
     }
 
     func updatePushMembers(recent: NSDictionary, mute: Bool) {
