@@ -16,6 +16,7 @@
 		2F24B7E6A601EE23ECF0E551 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B53CDA89F2EE985CA25D /* Constants.swift */; };
 		2F24B80B0E68340D29B9FE9F /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE2187A8F555FC5A1049 /* CountryCode.swift */; };
 		2F24B8199665CC48537C6DA8 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B11FA3BE51387510FCBF /* CollectionReference.swift */; };
+		2F24B994D87E04AC2FFF13B7 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B4F5BD410231A609B6C9 /* NewGroupViewController.swift */; };
 		2F24B9A6E74A2BD9390C13FF /* IncomingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BD68D8BFB0D44E04D347 /* IncomingMessages.swift */; };
 		2F24BA08A37C6F1B4F667A9B /* OutgoingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */; };
 		2F24BA26BE5797C0CD5D24F0 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B71813BDE0E679E18D25 /* Camera.swift */; };
@@ -42,6 +43,7 @@
 		9ECBCDE822F37C630042D0C8 /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECBCDE722F37C630042D0C8 /* BackgroundCollectionViewCell.swift */; };
 		9ECBCDEA22F388B10042D0C8 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECBCDE922F388B10042D0C8 /* EditProfileTableViewController.swift */; };
 		9ED0230722E825CF009CAE3C /* FinishRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED0230622E825CF009CAE3C /* FinishRegistrationViewController.swift */; };
+		9ED0C2AB22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED0C2AA22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift */; };
 		9EE7763722F1D6FA0040AB89 /* PicturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7763622F1D6FA0040AB89 /* PicturesCollectionViewController.swift */; };
 		9EE7763922F1D77F0040AB89 /* PicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7763822F1D77F0040AB89 /* PicturesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +53,7 @@
 		2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		2F24B11FA3BE51387510FCBF /* CollectionReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReference.swift; sourceTree = "<group>"; };
 		2F24B4E2E6D3116F8092036B /* AudioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
+		2F24B4F5BD410231A609B6C9 /* NewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		2F24B53CDA89F2EE985CA25D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F24B6E4CCFCDFF286D991C4 /* VideoMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		2F24B71813BDE0E679E18D25 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 		9ECBCDE722F37C630042D0C8 /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
 		9ECBCDE922F388B10042D0C8 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		9ED0230622E825CF009CAE3C /* FinishRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishRegistrationViewController.swift; sourceTree = "<group>"; };
+		9ED0C2AA22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		9EE7763622F1D6FA0040AB89 /* PicturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewController.swift; sourceTree = "<group>"; };
 		9EE7763822F1D77F0040AB89 /* PicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		D86586CD8D9CB56B7275CD9C /* Pods_iChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +151,7 @@
 				9EE7763622F1D6FA0040AB89 /* PicturesCollectionViewController.swift */,
 				9E398ECA22F46291005B7FBE /* ContactsTableViewController.swift */,
 				9E398EC922F4626A005B7FBE /* Settings */,
+				2F24B4F5BD410231A609B6C9 /* NewGroupViewController.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 				9E4DD92D22EB2561006A9E15 /* RecentChatsTableViewCell.swift */,
 				9EE7763822F1D77F0040AB89 /* PicturesCollectionViewCell.swift */,
 				9ECBCDE722F37C630042D0C8 /* BackgroundCollectionViewCell.swift */,
+				9ED0C2AA22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -381,10 +387,12 @@
 				2F24B57EAA67AFFDF53CDEA2 /* PhotoMediaItem.swift in Sources */,
 				2F24B62B125405C255ED9C37 /* VideoMessage.swift in Sources */,
 				9ECBCDE422F371610042D0C8 /* BlockedUsersViewController.swift in Sources */,
+				9ED0C2AB22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift in Sources */,
 				2F24BBFE520A4266E0C30765 /* AudioViewController.swift in Sources */,
 				2F24B181C83B546F98F92F4F /* T&CViewController.swift in Sources */,
 				9E398ECB22F46291005B7FBE /* ContactsTableViewController.swift in Sources */,
 				2F24B80B0E68340D29B9FE9F /* CountryCode.swift in Sources */,
+				2F24B994D87E04AC2FFF13B7 /* NewGroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
