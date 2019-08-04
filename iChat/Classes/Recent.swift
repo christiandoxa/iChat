@@ -151,6 +151,21 @@ func clearRecentCounterItem(recent: NSDictionary) {
     ])
 }
 
+func startGroupChat(group: Group) {
+    let chatRoomId = group.groupDictionary[kGROUPID] as! String
+    let members = group.groupDictionary[kMEMBERS] as! [String]
+    createRecent(members: members, chatRoomId: chatRoomId,
+            withUserUserName: group.groupDictionary[kNAME] as! String, type: kGROUP,
+            users: nil, avatarOfGroup: group.groupDictionary[kAVATAR] as? String)
+}
+
+func createRecentForNewMembers(groupId: String, groupName: String,
+                               membersToPush: [String], avatar: String) {
+    createRecent(members: membersToPush, chatRoomId: groupId,
+            withUserUserName: groupName, type: kGROUP, users: nil,
+            avatarOfGroup: avatar)
+}
+
 func updateExistingRecentWithNewValues(chatRoomId: String, members: [String],
                                        withValues: [String: Any]) {
     reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId)

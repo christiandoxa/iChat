@@ -309,7 +309,9 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
                 // add new section having key as section title and value as empty array of string
                 self.allUsersGrouped[sectionTitle] = []
                 // append title within section title list
-                self.sectionTitleList.append(sectionTitle)
+                if !sectionTitleList.contains(sectionTitle) {
+                    self.sectionTitleList.append(sectionTitle)
+                }
             }
             // add record to the section
             self.allUsersGrouped[firstCharString]?.append(currentUser)

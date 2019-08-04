@@ -42,15 +42,42 @@ class NewGroupViewController: UIViewController, UICollectionViewDataSource,
     }
 
     @objc func createButtonPressed(_ sender: Any) {
-        print("create tap")
+        if groupSubjectTextField.text != "" {
+            memberIds.append(FUser.currentId())
+            let avatarData = UIImage(named: "groupIcon")!.jpegData(
+                    compressionQuality: 0.7)!
+            var avatar = avatarData.base64EncodedString(
+                    options: NSData.Base64EncodingOptions(rawValue: 0))
+            if groupIcon != nil {
+                let avatarData = groupIcon!.jpegData(
+                        compressionQuality: 0.7)!
+                avatar = avatarData.base64EncodedString(
+                        options: NSData.Base64EncodingOptions(rawValue: 0))
+            }
+            let groupId = UUID().uuidString
+            let group = Group(groupId: groupId, subject: groupSubjectTextField.text!,
+                    ownerId: FUser.currentId(), members: memberIds, avatar: avatar)
+            group.saveGroup()
+            startGroupChat(group: group)
+            let chatVC = ChatViewController()
+            chatVC.titleName = (group.groupDictionary[kNAME] as! String)
+            chatVC.membersIds = (group.groupDictionary[kMEMBERS] as! [String])
+            chatVC.membersToPush = (group.groupDictionary[kMEMBERS] as! [String])
+            chatVC.chatRoomId = groupId
+            chatVC.isGroup = true
+            chatVC.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(chatVC, animated: true)
+        } else {
+            ProgressHUD.showError("Subject is required")
+        }
     }
 
     @IBAction func groupIconTapped(_ sender: Any) {
-        print("icon tap")
+        showIconOptions()
     }
 
     @IBAction func editIconButtonPressed(_ sender: Any) {
-        print("edit tap")
+        showIconOptions()
     }
 
     func didClickDeleteButton(indexPath: IndexPath) {
@@ -58,6 +85,38 @@ class NewGroupViewController: UIViewController, UICollectionViewDataSource,
         memberIds.remove(at: indexPath.row)
         collectionView.reloadData()
         updateParticipantsLabel()
+    }
+
+    func showIconOptions() {
+        let optionMenu = UIAlertController(title: "Choose group icon", message: nil,
+                preferredStyle: .actionSheet)
+        let takePhotoAction = UIAlertAction(title: "Take/Choose Photo", style: .default) {
+            alert in
+            print("camera")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        if groupIcon != nil {
+            let resetAction = UIAlertAction(title: "Reset", style: .default) {
+                alert in
+                self.groupIcon = nil
+                self.groupIconImageView.image = UIImage(named: "cameraItem")
+                self.editAvatarButtonOutlet.isHidden = true
+            }
+            optionMenu.addAction(resetAction)
+        }
+        optionMenu.addAction(takePhotoAction)
+        optionMenu.addAction(cancelAction)
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            if let currentPopoverpresentioncontroller = optionMenu.popoverPresentationController {
+                currentPopoverpresentioncontroller.sourceView = editAvatarButtonOutlet
+                currentPopoverpresentioncontroller.sourceRect = editAvatarButtonOutlet
+                        .bounds
+                currentPopoverpresentioncontroller.permittedArrowDirections = .up
+                present(optionMenu, animated: true)
+            }
+        } else {
+            present(optionMenu, animated: true)
+        }
     }
 
     func updateParticipantsLabel() {
