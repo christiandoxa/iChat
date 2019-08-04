@@ -37,6 +37,8 @@
 		9E4DD92E22EB2561006A9E15 /* RecentChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DD92D22EB2561006A9E15 /* RecentChatsTableViewCell.swift */; };
 		9E8B789D22F07C15003E7E5D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8B789C22F07C15003E7E5D /* MapViewController.swift */; };
 		9EA8EA4722EC237100296631 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA8EA4622EC237100296631 /* ChatViewController.swift */; };
+		9EC29C2B22F7746400AD5883 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC29C2A22F7746400AD5883 /* GroupViewController.swift */; };
+		9EC29C2D22F77C0400AD5883 /* InviteUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC29C2C22F77C0400AD5883 /* InviteUsersTableViewController.swift */; };
 		9EC3C9B422E87D6600ECF960 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC3C9B322E87D6600ECF960 /* SettingsTableViewController.swift */; };
 		9EC9F23722E8D3D20078BA69 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC9F23622E8D3D20078BA69 /* ChatsViewController.swift */; };
 		9ECBCDE422F371610042D0C8 /* BlockedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECBCDE322F371610042D0C8 /* BlockedUsersViewController.swift */; };
@@ -83,6 +85,8 @@
 		9E4DD92D22EB2561006A9E15 /* RecentChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsTableViewCell.swift; sourceTree = "<group>"; };
 		9E8B789C22F07C15003E7E5D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9EA8EA4622EC237100296631 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		9EC29C2A22F7746400AD5883 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		9EC29C2C22F77C0400AD5883 /* InviteUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersTableViewController.swift; sourceTree = "<group>"; };
 		9EC3C9B322E87D6600ECF960 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		9EC9F23622E8D3D20078BA69 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		9ECBCDE322F371610042D0C8 /* BlockedUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersViewController.swift; sourceTree = "<group>"; };
@@ -146,14 +150,16 @@
 		9E1A239322EAC7D5003DA7B2 /* SecondaryViews */ = {
 			isa = PBXGroup;
 			children = (
+				9E398EC922F4626A005B7FBE /* Settings */,
 				2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */,
 				9EA8EA4622EC237100296631 /* ChatViewController.swift */,
 				9E2EF74F22E9963400B50126 /* ProfileViewTableViewController.swift */,
 				9E8B789C22F07C15003E7E5D /* MapViewController.swift */,
 				9EE7763622F1D6FA0040AB89 /* PicturesCollectionViewController.swift */,
 				9E398ECA22F46291005B7FBE /* ContactsTableViewController.swift */,
-				9E398EC922F4626A005B7FBE /* Settings */,
 				2F24B4F5BD410231A609B6C9 /* NewGroupViewController.swift */,
+				9EC29C2A22F7746400AD5883 /* GroupViewController.swift */,
+				9EC29C2C22F77C0400AD5883 /* InviteUsersTableViewController.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -362,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EC29C2B22F7746400AD5883 /* GroupViewController.swift in Sources */,
 				9E4DD92E22EB2561006A9E15 /* RecentChatsTableViewCell.swift in Sources */,
 				9E20B66022E74BF200EDFA89 /* AppDelegate.swift in Sources */,
 				9E20B67222E74EF600EDFA89 /* WelcomeViewController.swift in Sources */,
@@ -384,6 +391,7 @@
 				2F24BA08A37C6F1B4F667A9B /* OutgoingMessages.swift in Sources */,
 				9ECBCDE822F37C630042D0C8 /* BackgroundCollectionViewCell.swift in Sources */,
 				2F24B9A6E74A2BD9390C13FF /* IncomingMessages.swift in Sources */,
+				9EC29C2D22F77C0400AD5883 /* InviteUsersTableViewController.swift in Sources */,
 				2F24BA26BE5797C0CD5D24F0 /* Camera.swift in Sources */,
 				9ECBCDEA22F388B10042D0C8 /* EditProfileTableViewController.swift in Sources */,
 				2F24BBBC0E1061F62378B03B /* Downloader.swift in Sources */,
