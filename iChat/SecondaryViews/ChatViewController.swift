@@ -79,6 +79,7 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         createTypingObserver()
+        loadUserDefaults()
         JSQMessagesCollectionViewCell.registerMenuAction(#selector(delete))
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Back"),
@@ -783,6 +784,29 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         }
         ProgressHUD.showError("Please give access to location in Settings")
         return false
+    }
+
+    func loadUserDefaults() {
+        firstLoad = userDefaults.bool(forKey: kFIRSTRUN)
+        if !firstLoad! {
+            userDefaults.set(true, forKey: kFIRSTRUN)
+            userDefaults.set(showAvatars, forKey: kSHOWAVATAR)
+            userDefaults.synchronize()
+        }
+        showAvatars = userDefaults.bool(forKey: kSHOWAVATAR)
+        checkForBackgroundImage()
+    }
+
+    func checkForBackgroundImage() {
+        if userDefaults.object(forKey: kBACKGROUBNDIMAGE) != nil {
+            collectionView.backgroundColor = .clear
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0,
+                    width: view.frame.width, height: view.frame.height))
+            imageView.image = UIImage(named: userDefaults.object(
+                    forKey: kBACKGROUBNDIMAGE) as! String)
+            imageView.contentMode = .scaleAspectFill
+            view.insertSubview(imageView, at: 0)
+        }
     }
 
     func addNewPictureMessageLink(link: String) {
