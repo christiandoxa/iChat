@@ -154,6 +154,7 @@ class InviteUsersTableViewController: UITableViewController, UserTableViewCellDe
     }
 
     @objc func doneButtonPressed() {
+        updateGroup(group: group)
     }
 
     func didTapAvatarImage(indexPath: IndexPath) {
@@ -164,6 +165,33 @@ class InviteUsersTableViewController: UITableViewController, UserTableViewCellDe
         let users = self.allUsersGrouped[sectionTitle]
         profileVC.user = users![indexPath.row]
         navigationController?.pushViewController(profileVC, animated: true)
+    }
+
+    func updateGroup(group: NSDictionary) {
+        let tempMembers = currentMemberIds + newMemberIds
+        let tempMembersToPush = group[kMEMBERSTOPUSH] as! [String] + newMemberIds
+        let withValues = [
+            kMEMBERS: tempMembers,
+            kMEMBERSTOPUSH: tempMembersToPush
+        ]
+        Group.updateGroup(groupId: group[kGROUPID] as! String, withValues: withValues)
+        createRecentForNewMembers(groupId: group[kGROUPID] as! String,
+                groupName: group[kNAME] as! String, membersToPush: tempMembersToPush,
+                avatar: group[kAVATAR] as! String)
+        updateExistingRecentWithNewValues(chatRoomId: group[kGROUPID] as! String,
+                members: tempMembers, withValues: withValues)
+        goToGroupChat(membersToPush: tempMembersToPush, members: tempMembers)
+    }
+
+    func goToGroupChat(membersToPush: [String], members: [String]) {
+        let chatVC = ChatViewController()
+        chatVC.titleName = (group[kNAME] as! String)
+        chatVC.membersIds = members
+        chatVC.membersToPush = membersToPush
+        chatVC.chatRoomId = (group[kGROUPID] as! String)
+        chatVC.isGroup = true
+        chatVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 
     fileprivate func splitDataIntoSection() {

@@ -37,6 +37,28 @@ class GroupViewController: UIViewController {
     }
 
     @IBAction func saveButtonPressed(_ sender: Any) {
+        var withValues: [String: Any]!
+        if groupNameTextField.text != "" {
+            withValues = [kNAME: groupNameTextField.text!]
+        } else {
+            ProgressHUD.showError("Subject is required")
+            return
+        }
+        let avatarData = cameraButtonOutlet.image?.jpegData(compressionQuality: 0.7)
+        let avatarString = avatarData?.base64EncodedString(
+                options: NSData.Base64EncodingOptions(rawValue: 0))
+        withValues = [
+            kNAME: groupNameTextField.text!,
+            kAVATAR: avatarString!
+        ]
+        Group.updateGroup(groupId: group[kGROUPID] as! String, withValues: withValues)
+        withValues = [
+            kWITHUSERFULLNAME: groupNameTextField.text!,
+            kAVATAR: avatarString!
+        ]
+        updateExistingRecentWithNewValues(chatRoomId: group[kGROUPID] as! String,
+                members: group[kMEMBERS] as! [String], withValues: withValues)
+        navigationController?.popToRootViewController(animated: true)
     }
 
     @objc func inviteUsers() {
