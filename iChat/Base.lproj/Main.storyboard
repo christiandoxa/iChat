@@ -178,10 +178,14 @@
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="WZa-Ms-EFU">
                                 <rect key="frame" x="137.5" y="103" width="100" height="100"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="XCi-es-y7I"/>
                                     <constraint firstAttribute="height" constant="100" id="ltm-Fo-73d"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pYM-F4-r9d" appends="YES" id="dqa-hd-nz5"/>
+                                </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TiX-GB-BjU">
                                 <rect key="frame" x="16" y="218" width="343" height="30"/>
@@ -249,6 +253,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzo-yd-z1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pYM-F4-r9d">
+                    <connections>
+                        <action selector="avatarImageTap:" destination="4Ju-Bd-ta5" id="SD2-Os-hww"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="870" y="121"/>
         </scene>

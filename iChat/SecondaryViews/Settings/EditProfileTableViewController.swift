@@ -8,8 +8,9 @@
 
 import UIKit
 import ProgressHUD
+import ImagePicker
 
-class EditProfileTableViewController: UITableViewController {
+class EditProfileTableViewController: UITableViewController, ImagePickerDelegate {
     @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -49,7 +50,7 @@ class EditProfileTableViewController: UITableViewController {
                 kFULLNAME: fullName,
             ]
             if avatarImage != nil {
-                let avatarData = avatarImage!.jpegData(compressionQuality: 0.7)!
+                let avatarData = avatarImage!.jpegData(compressionQuality: 0.4)!
                 let avatarString = avatarData.base64EncodedString(
                         options: NSData.Base64EncodingOptions(rawValue: 0))
                 withValues[kAVATAR] = avatarString
@@ -73,7 +74,10 @@ class EditProfileTableViewController: UITableViewController {
     }
 
     @IBAction func avatarTap(_ sender: Any) {
-        print("show image picker")
+        let imagePickerController = ImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.imageLimit = 1
+        present(imagePickerController, animated: true)
     }
 
     func setupUI() {
@@ -87,5 +91,21 @@ class EditProfileTableViewController: UITableViewController {
                 avatarImageView.image = avatarImage!.circleMasked
             }
         }
+    }
+
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        dismiss(animated: true)
+    }
+
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        if images.count > 0 {
+            avatarImage = images.first
+            avatarImageView.image = avatarImage!.circleMasked
+        }
+        dismiss(animated: true)
+    }
+
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        dismiss(animated: true)
     }
 }
