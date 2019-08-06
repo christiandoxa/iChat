@@ -17,6 +17,7 @@
 		2F24B7E6A601EE23ECF0E551 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B53CDA89F2EE985CA25D /* Constants.swift */; };
 		2F24B80B0E68340D29B9FE9F /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE2187A8F555FC5A1049 /* CountryCode.swift */; };
 		2F24B8199665CC48537C6DA8 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B11FA3BE51387510FCBF /* CollectionReference.swift */; };
+		2F24B922E1B984471BCDC631 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BEEDBA883360A47F4565 /* Encryption.swift */; };
 		2F24B994D87E04AC2FFF13B7 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B4F5BD410231A609B6C9 /* NewGroupViewController.swift */; };
 		2F24B9A6E74A2BD9390C13FF /* IncomingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BD68D8BFB0D44E04D347 /* IncomingMessages.swift */; };
 		2F24BA08A37C6F1B4F667A9B /* OutgoingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */; };
@@ -70,6 +71,7 @@
 		2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMediaItem.swift; sourceTree = "<group>"; };
 		2F24BE2187A8F555FC5A1049 /* CountryCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		2F24BEEDBA883360A47F4565 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingMessages.swift; sourceTree = "<group>"; };
 		44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.debug.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.debug.xcconfig"; sourceTree = "<group>"; };
 		83DAEAAC61C2CF4371F18911 /* Pods-iChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.release.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				2F24B4E2E6D3116F8092036B /* AudioViewController.swift */,
 				2F24BE2187A8F555FC5A1049 /* CountryCode.swift */,
 				2F24B4723892A65E5386F776 /* Group.swift */,
+				2F24BEEDBA883360A47F4565 /* Encryption.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				2F24B80B0E68340D29B9FE9F /* CountryCode.swift in Sources */,
 				2F24B994D87E04AC2FFF13B7 /* NewGroupViewController.swift in Sources */,
 				2F24B71E990B30F8F60C9F26 /* Group.swift in Sources */,
+				2F24B922E1B984471BCDC631 /* Encryption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

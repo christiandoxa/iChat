@@ -327,7 +327,9 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         var outgoingMessage: OutgoingMessages?
         let currentUser = FUser.currentUser()
         if let text = text {
-            outgoingMessage = OutgoingMessages(message: text,
+            let encryptedText = Encryption.encryptText(chatRoomId: chatRoomId,
+                    message: text)
+            outgoingMessage = OutgoingMessages(message: encryptedText,
                     senderId: currentUser!.objectId, senderName: currentUser!.firstname,
                     date: date, status: kDELIVERED, type: kTEXT)
         }
@@ -335,8 +337,9 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             uploadImage(image: pic, chatRoomId: chatRoomId,
                     view: self.navigationController!.view) { imageLink in
                 if imageLink != nil {
-                    let text = "[\(kPICTURE)]"
-                    outgoingMessage = OutgoingMessages(message: text,
+                    let encryptedText = Encryption.encryptText(
+                            chatRoomId: self.chatRoomId, message: "[\(kPICTURE)]")
+                    outgoingMessage = OutgoingMessages(message: encryptedText,
                             pictureLink: imageLink!, senderId: currentUser!.objectId,
                             senderName: currentUser!.fullname, date: date,
                             status: kDELIVERED, type: kPICTURE)
@@ -357,8 +360,9 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             uploadVideo(video: videoData!, chatRoomId: chatRoomId,
                     view: navigationController!.view) { videoLink in
                 if videoLink != nil {
-                    let text = "[\(kVIDEO)]"
-                    outgoingMessage = OutgoingMessages(message: text,
+                    let encryptedText = Encryption.encryptText(
+                            chatRoomId: self.chatRoomId, message: "[\(kVIDEO)]")
+                    outgoingMessage = OutgoingMessages(message: encryptedText,
                             video: videoLink!, thumbNail: dataThumbnail! as NSData,
                             senderId: currentUser!.objectId,
                             senderName: currentUser!.fullname, date: date,
@@ -377,9 +381,10 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
             uploadAudio(audioPath: audioPath, chatRoomId: chatRoomId,
                     view: navigationController!.view) { audioLink in
                 if audioLink != nil {
-                    let text = "[\(kAUDIO)]"
-                    outgoingMessage = OutgoingMessages(message: text, audio: audioLink!,
-                            senderId: currentUser!.objectId,
+                    let encryptedText = Encryption.encryptText(
+                            chatRoomId: self.chatRoomId, message: "[\(kAUDIO)]")
+                    outgoingMessage = OutgoingMessages(message: encryptedText,
+                            audio: audioLink!, senderId: currentUser!.objectId,
                             senderName: currentUser!.fullname, date: date,
                             status: kDELIVERED, type: kAUDIO)
                     JSQSystemSoundPlayer.jsq_playMessageSentSound()
@@ -395,8 +400,9 @@ class ChatViewController: JSQMessagesViewController, UIImagePickerControllerDele
         if location != nil {
             let lat: NSNumber = NSNumber(value: appDelegate.coordinates!.latitude)
             let long: NSNumber = NSNumber(value: appDelegate.coordinates!.longitude)
-            let text = "[\(kLOCATION)]"
-            outgoingMessage = OutgoingMessages(message: text, latitude: lat,
+            let encryptedText = Encryption.encryptText(
+                    chatRoomId: self.chatRoomId, message: "[\(kLOCATION)]")
+            outgoingMessage = OutgoingMessages(message: encryptedText, latitude: lat,
                     longitude: long, senderId: currentUser!.objectId,
                     senderName: currentUser!.fullname, date: date, status: kDELIVERED,
                     type: kLOCATION)
