@@ -24,7 +24,11 @@ class ProfileViewTableViewController: UITableViewController {
     }
 
     @IBAction func callButtonPressed(_ sender: Any) {
-        print("call user \(user!.fullname)")
+        let currentUser = FUser.currentUser()!
+        let call = CallClass(_callerId: currentUser.objectId,
+                _withUserId: user!.objectId, _callerFullName: currentUser.fullname,
+                _withUserFullName: user!.fullname)
+        call.saveCallInBackground()
     }
 
     @IBAction func chatButtonPressed(_ sender: Any) {

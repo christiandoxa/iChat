@@ -12,6 +12,7 @@
 		2F24B4D86AD168655ADF9365 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BCA9650B176F7CC8C7B1 /* Recent.swift */; };
 		2F24B57EAA67AFFDF53CDEA2 /* PhotoMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */; };
 		2F24B62B125405C255ED9C37 /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B6E4CCFCDFF286D991C4 /* VideoMessage.swift */; };
+		2F24B6BC24A644F3463934AB /* CallClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B5C2E685CAEB7305079F /* CallClass.swift */; };
 		2F24B71E990B30F8F60C9F26 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B4723892A65E5386F776 /* Group.swift */; };
 		2F24B7CCBE7A1826EA9DA438 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */; };
 		2F24B7E6A601EE23ECF0E551 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B53CDA89F2EE985CA25D /* Constants.swift */; };
@@ -27,6 +28,7 @@
 		2F24BBFE520A4266E0C30765 /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B4E2E6D3116F8092036B /* AudioViewController.swift */; };
 		2F24BCB4B4178E5B7549E7F8 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B9CD01D34F0DB44E6F9A /* PushNotifications.swift */; };
 		2F24BE887386E335EAB7382D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B870830B49375E10E55A /* UserTableViewCell.swift */; };
+		2F24BF2250FD54A2B675243C /* CallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BEC7A4FA767FAD909AEB /* CallTableViewController.swift */; };
 		2F24BF29EC93C11F6E2F3461 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */; };
 		46C4C9AB332801A4A59B39AD /* Pods_iChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86586CD8D9CB56B7275CD9C /* Pods_iChat.framework */; };
 		9E20B66022E74BF200EDFA89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */; };
@@ -40,6 +42,7 @@
 		9E8B789D22F07C15003E7E5D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8B789C22F07C15003E7E5D /* MapViewController.swift */; };
 		9E98FAB222FB3AF100BBC3BB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98FAB122FB3AF100BBC3BB /* NotificationService.swift */; };
 		9E98FAB622FB3AF100BBC3BB /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9E98FAAF22FB3AF100BBC3BB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9E98FABD22FB472500BBC3BB /* CallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98FABC22FB472500BBC3BB /* CallTableViewCell.swift */; };
 		9EA8EA4722EC237100296631 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA8EA4622EC237100296631 /* ChatViewController.swift */; };
 		9EC29C2B22F7746400AD5883 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC29C2A22F7746400AD5883 /* GroupViewController.swift */; };
 		9EC29C2D22F77C0400AD5883 /* InviteUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC29C2C22F77C0400AD5883 /* InviteUsersTableViewController.swift */; };
@@ -88,6 +91,7 @@
 		2F24B4E2E6D3116F8092036B /* AudioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		2F24B4F5BD410231A609B6C9 /* NewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		2F24B53CDA89F2EE985CA25D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2F24B5C2E685CAEB7305079F /* CallClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallClass.swift; sourceTree = "<group>"; };
 		2F24B6E4CCFCDFF286D991C4 /* VideoMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		2F24B71813BDE0E679E18D25 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		2F24B7E4D9C725E3A9D2BEC1 /* T&CViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "T&CViewController.swift"; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 		2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMediaItem.swift; sourceTree = "<group>"; };
 		2F24BE2187A8F555FC5A1049 /* CountryCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		2F24BEC7A4FA767FAD909AEB /* CallTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallTableViewController.swift; sourceTree = "<group>"; };
 		2F24BEEDBA883360A47F4565 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingMessages.swift; sourceTree = "<group>"; };
 		44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.debug.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		9E98FAB122FB3AF100BBC3BB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		9E98FAB322FB3AF100BBC3BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E98FABB22FB3D8600BBC3BB /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		9E98FABC22FB472500BBC3BB /* CallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTableViewCell.swift; sourceTree = "<group>"; };
 		9EA8EA4622EC237100296631 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		9EC29C2A22F7746400AD5883 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		9EC29C2C22F77C0400AD5883 /* InviteUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersTableViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 			children = (
 				9EC3C9B322E87D6600ECF960 /* SettingsTableViewController.swift */,
 				9EC9F23622E8D3D20078BA69 /* ChatsViewController.swift */,
+				2F24BEC7A4FA767FAD909AEB /* CallTableViewController.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -301,6 +308,7 @@
 				2F24B4723892A65E5386F776 /* Group.swift */,
 				2F24BEEDBA883360A47F4565 /* Encryption.swift */,
 				2F24B9CD01D34F0DB44E6F9A /* PushNotifications.swift */,
+				2F24B5C2E685CAEB7305079F /* CallClass.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -313,6 +321,7 @@
 				9EE7763822F1D77F0040AB89 /* PicturesCollectionViewCell.swift */,
 				9ECBCDE722F37C630042D0C8 /* BackgroundCollectionViewCell.swift */,
 				9ED0C2AA22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift */,
+				9E98FABC22FB472500BBC3BB /* CallTableViewCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -532,12 +541,15 @@
 				9ED0C2AB22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift in Sources */,
 				2F24BBFE520A4266E0C30765 /* AudioViewController.swift in Sources */,
 				2F24B181C83B546F98F92F4F /* T&CViewController.swift in Sources */,
+				9E98FABD22FB472500BBC3BB /* CallTableViewCell.swift in Sources */,
 				9E398ECB22F46291005B7FBE /* ContactsTableViewController.swift in Sources */,
 				2F24B80B0E68340D29B9FE9F /* CountryCode.swift in Sources */,
 				2F24B994D87E04AC2FFF13B7 /* NewGroupViewController.swift in Sources */,
 				2F24B71E990B30F8F60C9F26 /* Group.swift in Sources */,
 				2F24B922E1B984471BCDC631 /* Encryption.swift in Sources */,
 				2F24BCB4B4178E5B7549E7F8 /* PushNotifications.swift in Sources */,
+				2F24B6BC24A644F3463934AB /* CallClass.swift in Sources */,
+				2F24BF2250FD54A2B675243C /* CallTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

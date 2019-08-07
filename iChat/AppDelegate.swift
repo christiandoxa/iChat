@@ -50,10 +50,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        if FUser.currentUser() != nil {
+            updateCurrentUserInFirestore(withValues: [kISONLINE: true]) { error in
+                if error != nil {
+                    print("error updating user status \(error!.localizedDescription)")
+                }
+            }
+        }
         locationManagerStart()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
+        if FUser.currentUser() != nil {
+            updateCurrentUserInFirestore(withValues: [kISONLINE: false]) { error in
+                if error != nil {
+                    print("error updating user status \(error!.localizedDescription)")
+                }
+            }
+        }
         locationManagerStop()
     }
 
