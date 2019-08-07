@@ -56,6 +56,25 @@ class CallTableViewController: UITableViewController, UISearchResultsUpdating {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            var tempCall: CallClass!
+            if searchController.isActive && searchController.searchBar.text != "" {
+                tempCall = filteredCalls[indexPath.row]
+                filteredCalls.remove(at: indexPath.row)
+            } else {
+                tempCall = allCalls[indexPath.row]
+                allCalls.remove(at: indexPath.row)
+            }
+            tempCall.deleteCall()
+            tableView.reloadData()
+        }
+    }
+
     func loadCalls() {
         callListener = reference(.Call).document(FUser.currentId())
                 .collection(FUser.currentId()).order(by: kDATE, descending: true)
