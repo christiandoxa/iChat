@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import CoreLocation
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -20,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        //AutoLogin
+
         authListener = Auth.auth().addStateDidChangeListener { auth, user in
             Auth.auth().removeStateDidChangeListener(self.authListener!)
             if user != nil {
@@ -31,6 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 }
             }
         }
+
+        func userDidLogin(userId: String) {
+            startOneSignal()
+        }
+
+        NotificationCenter.default.addObserver(
+                forName: NSNotification.Name(USER_DID_LOGIN_NOTIFICATION),
+                object: nil, queue: nil) { notification in
+            let userId = notification.userInfo![kUSERID] as! String
+            UserDefaults.standard.setValue(userId, forKey: kUSERID)
+            UserDefaults.standard.synchronize()
+            userDidLogin(userId: userId)
+        }
+        OneSignal.initWithLaunchOptions(launchOptions, appId: kONESIGNALAPPID)
         return true
     }
 
@@ -92,5 +107,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         coordinates = locations.last!.coordinate
+    }
+
+    func startOneSignal() {
+        let status: OSPermissionSubscriptionState = OneSignal
+                .getPermissionSubscriptionState()
+        let userID = status.subscriptionStatus.userId
+        let pushToken = status.subscriptionStatus.pushToken
+        if pushToken != nil {
+            if let playerID = userID {
+                UserDefaults.standard.setValue(playerID, forKey: kPUSHID)
+            } else {
+                UserDefaults.standard.removeObject(forKey: kPUSHID)
+            }
+            UserDefaults.standard.synchronize()
+        }
+        updateOneSignalId()
     }
 }

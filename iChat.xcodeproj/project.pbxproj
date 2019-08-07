@@ -25,6 +25,7 @@
 		2F24BB0DAEC60C5FAEABEE79 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B837C7BAB72C24551700 /* FUser.swift */; };
 		2F24BBBC0E1061F62378B03B /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B8FD71673A9E5982F464 /* Downloader.swift */; };
 		2F24BBFE520A4266E0C30765 /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B4E2E6D3116F8092036B /* AudioViewController.swift */; };
+		2F24BCB4B4178E5B7549E7F8 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B9CD01D34F0DB44E6F9A /* PushNotifications.swift */; };
 		2F24BE887386E335EAB7382D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B870830B49375E10E55A /* UserTableViewCell.swift */; };
 		2F24BF29EC93C11F6E2F3461 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */; };
 		46C4C9AB332801A4A59B39AD /* Pods_iChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86586CD8D9CB56B7275CD9C /* Pods_iChat.framework */; };
@@ -37,6 +38,8 @@
 		9E398ECB22F46291005B7FBE /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E398ECA22F46291005B7FBE /* ContactsTableViewController.swift */; };
 		9E4DD92E22EB2561006A9E15 /* RecentChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DD92D22EB2561006A9E15 /* RecentChatsTableViewCell.swift */; };
 		9E8B789D22F07C15003E7E5D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8B789C22F07C15003E7E5D /* MapViewController.swift */; };
+		9E98FAB222FB3AF100BBC3BB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98FAB122FB3AF100BBC3BB /* NotificationService.swift */; };
+		9E98FAB622FB3AF100BBC3BB /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9E98FAAF22FB3AF100BBC3BB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9EA8EA4722EC237100296631 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA8EA4622EC237100296631 /* ChatViewController.swift */; };
 		9EC29C2B22F7746400AD5883 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC29C2A22F7746400AD5883 /* GroupViewController.swift */; };
 		9EC29C2D22F77C0400AD5883 /* InviteUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC29C2C22F77C0400AD5883 /* InviteUsersTableViewController.swift */; };
@@ -50,7 +53,32 @@
 		9ED0C2AB22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED0C2AA22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift */; };
 		9EE7763722F1D6FA0040AB89 /* PicturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7763622F1D6FA0040AB89 /* PicturesCollectionViewController.swift */; };
 		9EE7763922F1D77F0040AB89 /* PicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7763822F1D77F0040AB89 /* PicturesCollectionViewCell.swift */; };
+		C07E5FBFD6DA69E7F5BFDFF2 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9001C62D73E67066DAE18CA /* Pods_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9E98FAB422FB3AF100BBC3BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E20B65422E74BF100EDFA89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E98FAAE22FB3AF100BBC3BB;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9E98FABA22FB3AF100BBC3BB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9E98FAB622FB3AF100BBC3BB /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2F24B01073EC99E7F1879010 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -66,6 +94,7 @@
 		2F24B837C7BAB72C24551700 /* FUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		2F24B870830B49375E10E55A /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		2F24B8FD71673A9E5982F464 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		2F24B9CD01D34F0DB44E6F9A /* PushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		2F24BCA9650B176F7CC8C7B1 /* Recent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		2F24BD68D8BFB0D44E04D347 /* IncomingMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingMessages.swift; sourceTree = "<group>"; };
 		2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMediaItem.swift; sourceTree = "<group>"; };
@@ -74,6 +103,7 @@
 		2F24BEEDBA883360A47F4565 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingMessages.swift; sourceTree = "<group>"; };
 		44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.debug.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.debug.xcconfig"; sourceTree = "<group>"; };
+		6E7B8920F8222F54CCF0ADE1 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		83DAEAAC61C2CF4371F18911 /* Pods-iChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.release.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.release.xcconfig"; sourceTree = "<group>"; };
 		9E20B65C22E74BF200EDFA89 /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +116,11 @@
 		9E398ECA22F46291005B7FBE /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		9E4DD92D22EB2561006A9E15 /* RecentChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsTableViewCell.swift; sourceTree = "<group>"; };
 		9E8B789C22F07C15003E7E5D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9E98FAAA22FB39EE00BBC3BB /* iChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iChat.entitlements; sourceTree = "<group>"; };
+		9E98FAAF22FB3AF100BBC3BB /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E98FAB122FB3AF100BBC3BB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		9E98FAB322FB3AF100BBC3BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E98FABB22FB3D8600BBC3BB /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		9EA8EA4622EC237100296631 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		9EC29C2A22F7746400AD5883 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		9EC29C2C22F77C0400AD5883 /* InviteUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersTableViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +134,9 @@
 		9ED0C2AA22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		9EE7763622F1D6FA0040AB89 /* PicturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewController.swift; sourceTree = "<group>"; };
 		9EE7763822F1D77F0040AB89 /* PicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewCell.swift; sourceTree = "<group>"; };
+		A238F61E66EAB853FA47B5E1 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		D86586CD8D9CB56B7275CD9C /* Pods_iChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9001C62D73E67066DAE18CA /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +148,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9E98FAAC22FB3AF100BBC3BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C07E5FBFD6DA69E7F5BFDFF2 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -118,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				D86586CD8D9CB56B7275CD9C /* Pods_iChat.framework */,
+				D9001C62D73E67066DAE18CA /* Pods_OneSignalNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -127,6 +173,8 @@
 			children = (
 				44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */,
 				83DAEAAC61C2CF4371F18911 /* Pods-iChat.release.xcconfig */,
+				A238F61E66EAB853FA47B5E1 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				6E7B8920F8222F54CCF0ADE1 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -170,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				9E20B65E22E74BF200EDFA89 /* iChat */,
+				9E98FAB022FB3AF100BBC3BB /* OneSignalNotificationServiceExtension */,
 				9E20B65D22E74BF200EDFA89 /* Products */,
 				5A379C1B7B1101918FCC88C5 /* Pods */,
 				41C6CA643C69B4E181AA7E9A /* Frameworks */,
@@ -181,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				9E20B65C22E74BF200EDFA89 /* iChat.app */,
+				9E98FAAF22FB3AF100BBC3BB /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +238,7 @@
 		9E20B65E22E74BF200EDFA89 /* iChat */ = {
 			isa = PBXGroup;
 			children = (
+				9E98FAAA22FB39EE00BBC3BB /* iChat.entitlements */,
 				9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */,
 				9E20B66322E74BF200EDFA89 /* Main.storyboard */,
 				9E1A239122EAC75B003DA7B2 /* WelcomeViews */,
@@ -212,6 +263,16 @@
 				9ECBCDE922F388B10042D0C8 /* EditProfileTableViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		9E98FAB022FB3AF100BBC3BB /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				9E98FABB22FB3D8600BBC3BB /* OneSignalNotificationServiceExtension.entitlements */,
+				9E98FAB122FB3AF100BBC3BB /* NotificationService.swift */,
+				9E98FAB322FB3AF100BBC3BB /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 		9ED0230822E8261B009CAE3C /* Helpers */ = {
@@ -239,6 +300,7 @@
 				2F24BE2187A8F555FC5A1049 /* CountryCode.swift */,
 				2F24B4723892A65E5386F776 /* Group.swift */,
 				2F24BEEDBA883360A47F4565 /* Encryption.swift */,
+				2F24B9CD01D34F0DB44E6F9A /* PushNotifications.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -267,15 +329,35 @@
 				9E20B65922E74BF200EDFA89 /* Frameworks */,
 				9E20B65A22E74BF200EDFA89 /* Resources */,
 				8E207E2D235A316EDA982935 /* [CP] Embed Pods Frameworks */,
+				9E98FABA22FB3AF100BBC3BB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9E98FAB522FB3AF100BBC3BB /* PBXTargetDependency */,
 			);
 			name = iChat;
 			productName = iChat;
 			productReference = 9E20B65C22E74BF200EDFA89 /* iChat.app */;
 			productType = "com.apple.product-type.application";
+		};
+		9E98FAAE22FB3AF100BBC3BB /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E98FAB722FB3AF100BBC3BB /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				84A2C6AD6B86903A19EBF45C /* [CP] Check Pods Manifest.lock */,
+				9E98FAAB22FB3AF100BBC3BB /* Sources */,
+				9E98FAAC22FB3AF100BBC3BB /* Frameworks */,
+				9E98FAAD22FB3AF100BBC3BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 9E98FAAF22FB3AF100BBC3BB /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -289,6 +371,22 @@
 				TargetAttributes = {
 					9E20B65B22E74BF200EDFA89 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					9E98FAAE22FB3AF100BBC3BB = {
+						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -306,6 +404,7 @@
 			projectRoot = "";
 			targets = (
 				9E20B65B22E74BF200EDFA89 /* iChat */,
+				9E98FAAE22FB3AF100BBC3BB /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -322,9 +421,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9E98FAAD22FB3AF100BBC3BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		84A2C6AD6B86903A19EBF45C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8E207E2D235A316EDA982935 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,10 +537,27 @@
 				2F24B994D87E04AC2FFF13B7 /* NewGroupViewController.swift in Sources */,
 				2F24B71E990B30F8F60C9F26 /* Group.swift in Sources */,
 				2F24B922E1B984471BCDC631 /* Encryption.swift in Sources */,
+				2F24BCB4B4178E5B7549E7F8 /* PushNotifications.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E98FAAB22FB3AF100BBC3BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E98FAB222FB3AF100BBC3BB /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9E98FAB522FB3AF100BBC3BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E98FAAE22FB3AF100BBC3BB /* OneSignalNotificationServiceExtension */;
+			targetProxy = 9E98FAB422FB3AF100BBC3BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9E20B66322E74BF200EDFA89 /* Main.storyboard */ = {
@@ -554,7 +699,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iChat/iChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35D5WF44F3;
 				INFOPLIST_FILE = iChat/Info.plist;
@@ -573,7 +720,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83DAEAAC61C2CF4371F18911 /* Pods-iChat.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iChat/iChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35D5WF44F3;
 				INFOPLIST_FILE = iChat/Info.plist;
@@ -583,6 +732,48 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codeasteroid.iChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9E98FAB822FB3AF100BBC3BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A238F61E66EAB853FA47B5E1 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 35D5WF44F3;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeasteroid.iChat.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9E98FAB922FB3AF100BBC3BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E7B8920F8222F54CCF0ADE1 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 35D5WF44F3;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeasteroid.iChat.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -605,6 +796,15 @@
 			buildConfigurations = (
 				9E20B66F22E74BF300EDFA89 /* Debug */,
 				9E20B67022E74BF300EDFA89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E98FAB722FB3AF100BBC3BB /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E98FAB822FB3AF100BBC3BB /* Debug */,
+				9E98FAB922FB3AF100BBC3BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

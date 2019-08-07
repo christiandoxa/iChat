@@ -127,6 +127,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - OneSignal (2.10.0)
   - pop (1.0.12)
   - ProgressHUD (2.60)
   - Protobuf (3.9.0)
@@ -147,6 +148,7 @@ DEPENDENCIES:
   - IQAudioRecorderController
   - JSQMessagesViewController
   - MBProgressHUD
+  - OneSignal
   - ProgressHUD
   - RNCryptor
 
@@ -176,6 +178,7 @@ SPEC REPOS:
     - leveldb-library
     - MBProgressHUD
     - nanopb
+    - OneSignal
     - pop
     - ProgressHUD
     - Protobuf
@@ -208,6 +211,7 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  OneSignal: 0f5ff711d9f25da54885e4ab06ef0abc221a46ef
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
@@ -215,6 +219,6 @@ SPEC CHECKSUMS:
   SCSiriWaveformView: 15b9dd6f94c7536e2032b34a35c6ff74d38c7411
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: ce9c1c8c211f1e2f48b494669529b1c08561e82c
+PODFILE CHECKSUM: 4701b47e57babc5a63f4f0b02a96d7beca85bf31
 
 COCOAPODS: 1.7.5
