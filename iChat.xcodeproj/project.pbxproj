@@ -31,6 +31,7 @@
 		2F24BF2250FD54A2B675243C /* CallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BEC7A4FA767FAD909AEB /* CallTableViewController.swift */; };
 		2F24BF29EC93C11F6E2F3461 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */; };
 		46C4C9AB332801A4A59B39AD /* Pods_iChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86586CD8D9CB56B7275CD9C /* Pods_iChat.framework */; };
+		9E05C04522FC3EBC00BDBF6B /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E05C04422FC3EBC00BDBF6B /* PushKit.framework */; };
 		9E20B66022E74BF200EDFA89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */; };
 		9E20B66522E74BF200EDFA89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E20B66322E74BF200EDFA89 /* Main.storyboard */; };
 		9E20B66722E74BF300EDFA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E20B66622E74BF300EDFA89 /* Assets.xcassets */; };
@@ -110,6 +111,8 @@
 		44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.debug.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.debug.xcconfig"; sourceTree = "<group>"; };
 		6E7B8920F8222F54CCF0ADE1 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		83DAEAAC61C2CF4371F18911 /* Pods-iChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.release.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.release.xcconfig"; sourceTree = "<group>"; };
+		9E05C04022FC3D5600BDBF6B /* iChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		9E05C04422FC3EBC00BDBF6B /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		9E20B65C22E74BF200EDFA89 /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E20B66422E74BF200EDFA89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E05C04522FC3EBC00BDBF6B /* PushKit.framework in Frameworks */,
 				46C4C9AB332801A4A59B39AD /* Pods_iChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +172,7 @@
 		41C6CA643C69B4E181AA7E9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9E05C04422FC3EBC00BDBF6B /* PushKit.framework */,
 				D86586CD8D9CB56B7275CD9C /* Pods_iChat.framework */,
 				D9001C62D73E67066DAE18CA /* Pods_OneSignalNotificationServiceExtension.framework */,
 			);
@@ -257,6 +262,7 @@
 				9E20B66622E74BF300EDFA89 /* Assets.xcassets */,
 				9E20B66822E74BF300EDFA89 /* LaunchScreen.storyboard */,
 				9E20B66B22E74BF300EDFA89 /* Info.plist */,
+				9E05C04022FC3D5600BDBF6B /* iChat-Bridging-Header.h */,
 			);
 			path = iChat;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				TargetAttributes = {
 					9E20B65B22E74BF200EDFA89 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -713,6 +720,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iChat/iChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35D5WF44F3;
@@ -723,6 +731,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codeasteroid.iChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iChat/iChat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -734,6 +744,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iChat/iChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35D5WF44F3;
@@ -744,6 +755,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codeasteroid.iChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iChat/iChat-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

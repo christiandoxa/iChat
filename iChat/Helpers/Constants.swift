@@ -20,8 +20,8 @@ public let APP_STARTED_NOTIFICATION = "AppStartedNotification"
 //IDS and Keys
 public let kFILEREFERENCE = "gs://ichat-bc0c1.appspot.com"
 public let kONESIGNALAPPID = "416a2503-e209-43f7-bea1-65fca10bcf8b"
-public let kSINCHKEY = ""
-public let kSINCHSECRET = ""
+public let kSINCHKEY = "b4f51ed7-635d-45eb-811f-c47025463d25"
+public let kSINCHSECRET = "1heH3yAB0kqCRrIgGVNblQ=="
 public let kAPPURL = "App Link"
 
 //Firebase Headers
