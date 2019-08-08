@@ -14,6 +14,7 @@
 		2F24B62B125405C255ED9C37 /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B6E4CCFCDFF286D991C4 /* VideoMessage.swift */; };
 		2F24B6BC24A644F3463934AB /* CallClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B5C2E685CAEB7305079F /* CallClass.swift */; };
 		2F24B71E990B30F8F60C9F26 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B4723892A65E5386F776 /* Group.swift */; };
+		2F24B7562E831D6184A799FC /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BEFE16E9DBC7E91226E3 /* CallViewController.swift */; };
 		2F24B7CCBE7A1826EA9DA438 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */; };
 		2F24B7E6A601EE23ECF0E551 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B53CDA89F2EE985CA25D /* Constants.swift */; };
 		2F24B80B0E68340D29B9FE9F /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE2187A8F555FC5A1049 /* CountryCode.swift */; };
@@ -32,6 +33,8 @@
 		2F24BF29EC93C11F6E2F3461 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */; };
 		46C4C9AB332801A4A59B39AD /* Pods_iChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86586CD8D9CB56B7275CD9C /* Pods_iChat.framework */; };
 		9E05C04522FC3EBC00BDBF6B /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E05C04422FC3EBC00BDBF6B /* PushKit.framework */; };
+		9E20A59822FC738F002A5415 /* ringback.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9E20A59622FC738E002A5415 /* ringback.wav */; };
+		9E20A59922FC738F002A5415 /* incoming.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9E20A59722FC738F002A5415 /* incoming.wav */; };
 		9E20B66022E74BF200EDFA89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */; };
 		9E20B66522E74BF200EDFA89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E20B66322E74BF200EDFA89 /* Main.storyboard */; };
 		9E20B66722E74BF300EDFA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E20B66622E74BF300EDFA89 /* Assets.xcassets */; };
@@ -107,12 +110,15 @@
 		2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		2F24BEC7A4FA767FAD909AEB /* CallTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallTableViewController.swift; sourceTree = "<group>"; };
 		2F24BEEDBA883360A47F4565 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		2F24BEFE16E9DBC7E91226E3 /* CallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
 		2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingMessages.swift; sourceTree = "<group>"; };
 		44CE1348D9827AC857C2EF25 /* Pods-iChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.debug.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.debug.xcconfig"; sourceTree = "<group>"; };
 		6E7B8920F8222F54CCF0ADE1 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		83DAEAAC61C2CF4371F18911 /* Pods-iChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChat.release.xcconfig"; path = "Target Support Files/Pods-iChat/Pods-iChat.release.xcconfig"; sourceTree = "<group>"; };
 		9E05C04022FC3D5600BDBF6B /* iChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		9E05C04422FC3EBC00BDBF6B /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		9E20A59622FC738E002A5415 /* ringback.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringback.wav; sourceTree = "<group>"; };
+		9E20A59722FC738F002A5415 /* incoming.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = incoming.wav; sourceTree = "<group>"; };
 		9E20B65C22E74BF200EDFA89 /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E20B66422E74BF200EDFA89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 				2F24B4F5BD410231A609B6C9 /* NewGroupViewController.swift */,
 				9EC29C2A22F7746400AD5883 /* GroupViewController.swift */,
 				9EC29C2C22F77C0400AD5883 /* InviteUsersTableViewController.swift */,
+				2F24BEFE16E9DBC7E91226E3 /* CallViewController.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -260,6 +267,8 @@
 				9ED0230922E82664009CAE3C /* Classes */,
 				9ED0230822E8261B009CAE3C /* Helpers */,
 				9E20B66622E74BF300EDFA89 /* Assets.xcassets */,
+				9E20A59722FC738F002A5415 /* incoming.wav */,
+				9E20A59622FC738E002A5415 /* ringback.wav */,
 				9E20B66822E74BF300EDFA89 /* LaunchScreen.storyboard */,
 				9E20B66B22E74BF300EDFA89 /* Info.plist */,
 				9E05C04022FC3D5600BDBF6B /* iChat-Bridging-Header.h */,
@@ -432,7 +441,9 @@
 			files = (
 				9E20B66A22E74BF300EDFA89 /* LaunchScreen.storyboard in Resources */,
 				9E20B66722E74BF300EDFA89 /* Assets.xcassets in Resources */,
+				9E20A59822FC738F002A5415 /* ringback.wav in Resources */,
 				9E20B66522E74BF200EDFA89 /* Main.storyboard in Resources */,
+				9E20A59922FC738F002A5415 /* incoming.wav in Resources */,
 				2F24B1FFE8F7581EAA6C3C16 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,6 +568,7 @@
 				2F24BCB4B4178E5B7549E7F8 /* PushNotifications.swift in Sources */,
 				2F24B6BC24A644F3463934AB /* CallClass.swift in Sources */,
 				2F24BF2250FD54A2B675243C /* CallTableViewController.swift in Sources */,
+				2F24B7562E831D6184A799FC /* CallViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

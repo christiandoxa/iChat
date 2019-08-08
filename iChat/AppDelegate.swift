@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-
         authListener = Auth.auth().addStateDidChangeListener { auth, user in
             Auth.auth().removeStateDidChangeListener(self.authListener!)
             if user != nil {
@@ -37,8 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 }
             }
         }
+        voipRegistration()
+        push = Sinch.managedPush(with: .development)
+        push.delegate = self
+        push.setDesiredPushTypeAutomatically()
 
         func userDidLogin(userId: String) {
+            push.registerUserNotificationSettings()
+            initSinchWithUserId(userId: userId)
             startOneSignal()
         }
 
@@ -220,12 +225,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func client(_ client: SINCallClient!, didReceiveIncomingCall call: SINCall!) {
-        print("did receive call")
         var top = window!.rootViewController!
         while (top.presentedViewController != nil) {
             top = top.presentedViewController!
         }
-
+        let callVC = UIStoryboard(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "CallVC")
+                as! CallViewController
+        callVC._call = call
+        top.present(callVC, animated: true)
     }
 
     func clientDidStart(_ client: SINClient!) {
@@ -251,7 +259,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType) {
-        print("did get incoming push")
         handleRemoteNotification(userInfo: payload.dictionaryPayload as NSDictionary)
     }
 }
