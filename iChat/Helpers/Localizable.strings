@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  iChat
+
+  Created by Christian Doxa Hamasiah on 08/08/19.
+  Copyright © 2019 Christian Doxa Hamasiah. All rights reserved.
+*/
+
+"SIN_INCOMING_CALL" = "Incoming Call";
+"SIN_CANCEL_CALL" = "Cancel Call";

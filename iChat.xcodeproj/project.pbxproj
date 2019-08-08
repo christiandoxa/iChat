@@ -21,6 +21,7 @@
 		2F24B8199665CC48537C6DA8 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B11FA3BE51387510FCBF /* CollectionReference.swift */; };
 		2F24B922E1B984471BCDC631 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BEEDBA883360A47F4565 /* Encryption.swift */; };
 		2F24B994D87E04AC2FFF13B7 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B4F5BD410231A609B6C9 /* NewGroupViewController.swift */; };
+		2F24B99EE41B664849ACEB79 /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BE906A925CC40DE11DD8 /* Badges.swift */; };
 		2F24B9A6E74A2BD9390C13FF /* IncomingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BD68D8BFB0D44E04D347 /* IncomingMessages.swift */; };
 		2F24BA08A37C6F1B4F667A9B /* OutgoingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24BFA5EEE0E6C915AEE3F1 /* OutgoingMessages.swift */; };
 		2F24BA26BE5797C0CD5D24F0 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F24B71813BDE0E679E18D25 /* Camera.swift */; };
@@ -35,6 +36,10 @@
 		9E05C04522FC3EBC00BDBF6B /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E05C04422FC3EBC00BDBF6B /* PushKit.framework */; };
 		9E20A59822FC738F002A5415 /* ringback.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9E20A59622FC738E002A5415 /* ringback.wav */; };
 		9E20A59922FC738F002A5415 /* incoming.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9E20A59722FC738F002A5415 /* incoming.wav */; };
+		9E20A59B22FC89B6002A5415 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E20A59A22FC89B6002A5415 /* Localizable.strings */; };
+		9E20A59D22FC8EB7002A5415 /* PhoneNumberLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20A59C22FC8EB7002A5415 /* PhoneNumberLoginViewController.swift */; };
+		9E20A5A022FC9A39002A5415 /* SINCallKitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20A59E22FC9A39002A5415 /* SINCallKitProvider.swift */; };
+		9E20A5A122FC9A39002A5415 /* AudioControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20A59F22FC9A39002A5415 /* AudioControllerDelegate.swift */; };
 		9E20B66022E74BF200EDFA89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */; };
 		9E20B66522E74BF200EDFA89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E20B66322E74BF200EDFA89 /* Main.storyboard */; };
 		9E20B66722E74BF300EDFA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E20B66622E74BF300EDFA89 /* Assets.xcassets */; };
@@ -108,6 +113,7 @@
 		2F24BDA932E7BB4D81C75852 /* PhotoMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMediaItem.swift; sourceTree = "<group>"; };
 		2F24BE2187A8F555FC5A1049 /* CountryCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		2F24BE83F62D4AB1C5F27C62 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		2F24BE906A925CC40DE11DD8 /* Badges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badges.swift; sourceTree = "<group>"; };
 		2F24BEC7A4FA767FAD909AEB /* CallTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallTableViewController.swift; sourceTree = "<group>"; };
 		2F24BEEDBA883360A47F4565 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		2F24BEFE16E9DBC7E91226E3 /* CallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +125,10 @@
 		9E05C04422FC3EBC00BDBF6B /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		9E20A59622FC738E002A5415 /* ringback.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringback.wav; sourceTree = "<group>"; };
 		9E20A59722FC738F002A5415 /* incoming.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = incoming.wav; sourceTree = "<group>"; };
+		9E20A59A22FC89B6002A5415 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		9E20A59C22FC8EB7002A5415 /* PhoneNumberLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberLoginViewController.swift; sourceTree = "<group>"; };
+		9E20A59E22FC9A39002A5415 /* SINCallKitProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SINCallKitProvider.swift; sourceTree = "<group>"; };
+		9E20A59F22FC9A39002A5415 /* AudioControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioControllerDelegate.swift; sourceTree = "<group>"; };
 		9E20B65C22E74BF200EDFA89 /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E20B66422E74BF200EDFA89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -200,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				9E20B67122E74EF600EDFA89 /* WelcomeViewController.swift */,
+				9E20A59C22FC8EB7002A5415 /* PhoneNumberLoginViewController.swift */,
 				9ED0230622E825CF009CAE3C /* FinishRegistrationViewController.swift */,
 			);
 			path = WelcomeViews;
@@ -259,6 +270,8 @@
 			children = (
 				9E98FAAA22FB39EE00BBC3BB /* iChat.entitlements */,
 				9E20B65F22E74BF200EDFA89 /* AppDelegate.swift */,
+				9E20A59F22FC9A39002A5415 /* AudioControllerDelegate.swift */,
+				9E20A59E22FC9A39002A5415 /* SINCallKitProvider.swift */,
 				9E20B66322E74BF200EDFA89 /* Main.storyboard */,
 				9E1A239122EAC75B003DA7B2 /* WelcomeViews */,
 				9E1A239322EAC7D5003DA7B2 /* SecondaryViews */,
@@ -304,6 +317,8 @@
 				2F24B11FA3BE51387510FCBF /* CollectionReference.swift */,
 				2F24B0FAFC2BED109517ACBF /* HelperFunctions.swift */,
 				2F24B8FD71673A9E5982F464 /* Downloader.swift */,
+				2F24BE906A925CC40DE11DD8 /* Badges.swift */,
+				9E20A59A22FC89B6002A5415 /* Localizable.strings */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -442,6 +457,7 @@
 				9E20B66A22E74BF300EDFA89 /* LaunchScreen.storyboard in Resources */,
 				9E20B66722E74BF300EDFA89 /* Assets.xcassets in Resources */,
 				9E20A59822FC738F002A5415 /* ringback.wav in Resources */,
+				9E20A59B22FC89B6002A5415 /* Localizable.strings in Resources */,
 				9E20B66522E74BF200EDFA89 /* Main.storyboard in Resources */,
 				9E20A59922FC738F002A5415 /* incoming.wav in Resources */,
 				2F24B1FFE8F7581EAA6C3C16 /* GoogleService-Info.plist in Resources */,
@@ -538,6 +554,7 @@
 				9EC9F23722E8D3D20078BA69 /* ChatsViewController.swift in Sources */,
 				9ECBCDE622F37C2A0042D0C8 /* BackgroundCollectionViewController.swift in Sources */,
 				9E8B789D22F07C15003E7E5D /* MapViewController.swift in Sources */,
+				9E20A5A022FC9A39002A5415 /* SINCallKitProvider.swift in Sources */,
 				9ED0230722E825CF009CAE3C /* FinishRegistrationViewController.swift in Sources */,
 				9EE7763722F1D6FA0040AB89 /* PicturesCollectionViewController.swift in Sources */,
 				9EE7763922F1D77F0040AB89 /* PicturesCollectionViewCell.swift in Sources */,
@@ -549,6 +566,7 @@
 				2F24BA08A37C6F1B4F667A9B /* OutgoingMessages.swift in Sources */,
 				9ECBCDE822F37C630042D0C8 /* BackgroundCollectionViewCell.swift in Sources */,
 				2F24B9A6E74A2BD9390C13FF /* IncomingMessages.swift in Sources */,
+				9E20A59D22FC8EB7002A5415 /* PhoneNumberLoginViewController.swift in Sources */,
 				9EC29C2D22F77C0400AD5883 /* InviteUsersTableViewController.swift in Sources */,
 				2F24BA26BE5797C0CD5D24F0 /* Camera.swift in Sources */,
 				9ECBCDEA22F388B10042D0C8 /* EditProfileTableViewController.swift in Sources */,
@@ -558,6 +576,7 @@
 				9ECBCDE422F371610042D0C8 /* BlockedUsersViewController.swift in Sources */,
 				9ED0C2AB22F7004C00DF9118 /* GroupMemberCollectionViewCell.swift in Sources */,
 				2F24BBFE520A4266E0C30765 /* AudioViewController.swift in Sources */,
+				9E20A5A122FC9A39002A5415 /* AudioControllerDelegate.swift in Sources */,
 				2F24B181C83B546F98F92F4F /* T&CViewController.swift in Sources */,
 				9E98FABD22FB472500BBC3BB /* CallTableViewCell.swift in Sources */,
 				9E398ECB22F46291005B7FBE /* ContactsTableViewController.swift in Sources */,
@@ -569,6 +588,7 @@
 				2F24B6BC24A644F3463934AB /* CallClass.swift in Sources */,
 				2F24BF2250FD54A2B675243C /* CallTableViewController.swift in Sources */,
 				2F24B7562E831D6184A799FC /* CallViewController.swift in Sources */,
+				2F24B99EE41B664849ACEB79 /* Badges.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,6 +757,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35D5WF44F3;
 				INFOPLIST_FILE = iChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -761,6 +782,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35D5WF44F3;
 				INFOPLIST_FILE = iChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -781,6 +803,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35D5WF44F3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -802,6 +825,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35D5WF44F3;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

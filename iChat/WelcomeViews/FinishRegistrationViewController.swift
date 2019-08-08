@@ -44,7 +44,9 @@ class FinishRegistrationViewController: UIViewController, ImagePickerDelegate {
     @IBAction func doneButtonPressed(_ sender: Any) {
         dismissKeyboard()
         ProgressHUD.show("Registering...")
-        if textFieldName.text != "" && textFieldSurname.text != "" && textFieldCountry.text != "" && textFieldCity.text != "" && textFieldPhone.text != "" {
+        if textFieldName.text != "" && textFieldSurname.text != "" &&
+                   textFieldCountry.text != "" && textFieldCity.text != "" &&
+                   textFieldPhone.text != "" {
             FUser.registerUserWith(email: email, password: password, firstName: textFieldName.text!, lastName: textFieldSurname.text!) { (error) in
                 if error != nil {
                     ProgressHUD.dismiss()
